@@ -140,13 +140,15 @@
     animation: tv-cartao-entra 620ms var(--curva-saida) forwards;
     animation-delay: calc(var(--k, 0) * 85ms);
   }
-  html.tv-anima .tv-cartoes .barra i {
+  /* As barras têm classes próprias: a classe dos cartões é removida quando a
+     entrada acaba, e isso não pode deixá-las a meio. */
+  html.tv-anima .tv-barras .barra i {
     transform: scaleX(0);
     transform-origin: 0 50%;
     transition: transform 680ms var(--curva-saida);
     transition-delay: calc(var(--k, 0) * 55ms);
   }
-  html.tv-anima .tv-cartoes.tv-barras .barra i {
+  html.tv-anima .tv-barras.tv-cheias .barra i {
     transform: scaleX(1);
   }
 

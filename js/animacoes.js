@@ -191,19 +191,29 @@ function cartoesDoResultado() {
     grelha.dataset.tv = "1";
     // Num separador escondido não há fotogramas: aparece tudo, sem esconder nada.
     if (document.hidden) return;
-    grelha.classList.add("tv-cartoes");
 
-    [...grelha.children].forEach((cartao, indice) => {
+    grelha.classList.add("tv-cartoes", "tv-barras");
+
+    const cartoes = [...grelha.children];
+
+    // A classe que esconde os cartões só pode sair quando a entrada acaba: é
+    // ela que tem o opacity 0. Sai uma vez, no fim do último cartão, e há uma
+    // rede de segurança — o conteúdo nunca fica invisível à espera de um evento.
+    const mostrar = () => {
+      if (grelha.dataset.fim === "1") return;
+      grelha.dataset.fim = "1";
+      grelha.classList.remove("tv-cartoes");
+    };
+
+    let terminados = 0;
+    grelha.addEventListener("animationend", (evento) => {
+      if (!evento.target.classList.contains("rotacao")) return;
+      terminados += 1;
+      if (terminados >= cartoes.length) mostrar();
+    });
+
+    cartoes.forEach((cartao, indice) => {
       cartao.style.setProperty("--k", String(indice));
-      // Terminada a entrada, o transform fica livre para o hover.
-      cartao.addEventListener(
-        "animationend",
-        (evento) => {
-          if (evento.target === cartao) cartao.style.animation = "none";
-        },
-        { once: true }
-      );
-
       const nota = cartao.querySelector(".rotacao__ponto");
       if (nota) contarNota(nota);
     });
@@ -213,8 +223,10 @@ function cartoesDoResultado() {
       .forEach((barra, indice) => barra.style.setProperty("--k", String(indice)));
 
     requestAnimationFrame(() =>
-      requestAnimationFrame(() => grelha.classList.add("tv-barras"))
+      requestAnimationFrame(() => grelha.classList.add("tv-cheias"))
     );
+
+    window.setTimeout(mostrar, 2000);
   };
 
   new MutationObserver(animar).observe(alvo, { childList: true });
