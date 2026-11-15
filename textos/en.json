@@ -31,7 +31,7 @@
     "titulo": "The living",
     "titulo2": "calendar",
     "titulo3": "of your land.",
-    "sub": "Pick your area, what you planted and what matters to you. You see the land's year and three rotations to compare.",
+    "sub": "Pick your area, say what you planted and what matters to you. Terra Viva reads NASA data for your point on the map, shows the year of your land month by month, and compares three crop rotations — with the evidence, the gaps and the risks in plain sight.",
     "cta1": "Start with the map",
     "cta2": "How it works",
     "factos": {
@@ -39,48 +39,46 @@
       "dados": "NASA POWER data, long series",
       "offline": "Works without internet"
     },
-    "motivoLegenda": "The Earth Clock — one year in your area, month by month",
-    "subMais": "Pick your area, say what you planted and what matters to you. Terra Viva reads NASA data for your point on the map, shows the year of your land month by month, and compares three crop rotations — with the evidence, the gaps and the risks in plain sight."
+    "motivoLegenda": "The Earth Clock — one year in your area, month by month"
   },
   "confianca": {
     "titulo": "No number without a source",
     "sub": "Every value on screen carries one of three labels. They are never mixed.",
     "nasa": {
       "nome": "NASA data",
-      "texto": "Rain, temperature, soil moisture and radiation for your point, as the satellite records them."
+      "texto": "Rain, temperature, soil moisture and radiation for your point, as the satellite and the reanalysis record them."
     },
     "calculado": {
       "nome": "Calculated by us",
-      "texto": "Indicators derived from the data, with the rule written beside them."
+      "texto": "Indicators derived from the data, with the rule written next to them. You can disagree with the rule and see what changes."
     },
     "conhecimento": {
       "nome": "Agronomic knowledge",
-      "texto": "Crop cycles and needs, always with the source."
+      "texto": "Cycles, water needs and practices for each crop, always with the source cited."
     }
   },
   "fluxo": {
     "etiqueta": "Four steps",
     "titulo": "From your field to the comparison",
-    "sub": "Four big taps. You can go back whenever you like.",
+    "sub": "All on a phone, with large tap targets and readable text. You can go back at any step.",
     "passos": {
       "1": "Where you are",
       "2": "What you planted",
       "3": "What matters to you",
       "4": "Your comparison"
-    },
-    "passoDe": "Step {n} of 4"
+    }
   },
   "passo1": {
     "etiqueta": "Step 01",
     "titulo": "Where are you?",
-    "sub": "Tap the map or pick the area from the list.",
+    "sub": "Tap the map of Angola or choose the area from the list.",
     "listaTitulo": "Preloaded areas",
     "escolhida": "Chosen area",
     "nenhuma": "You have not chosen an area yet.",
     "fonteMapa": "Outline: Natural Earth (public domain). Coordinates: OpenStreetMap / Nominatim (ODbL).",
     "solo": {
       "titulo": "What is your soil like?",
-      "sub": "Pick the texture of your soil. You can change it later.",
+      "sub": "Pick the texture you know from your land. It is optional and you can change it later.",
       "arenoso": "Sandy",
       "franco": "Loam",
       "argiloso": "Clay",
@@ -91,7 +89,7 @@
   "passo2": {
     "etiqueta": "Step 02",
     "titulo": "What did you plant?",
-    "sub": "Pick last season's crop. The one before is optional.",
+    "sub": "Choose last season's crop and, if you remember, the one before it.",
     "ultima": "Last season",
     "anterior": "Previous season (optional)",
     "pousio": "Fallow",
@@ -101,7 +99,7 @@
   "passo3": {
     "etiqueta": "Step 03",
     "titulo": "What matters to you?",
-    "sub": "Say what matters most: water, yield, soil or risk.",
+    "sub": "Give weight to what drives your decisions. Three positions per priority, no numbers to memorise.",
     "prioridades": {
       "agua": "Water",
       "rendimento": "Yield",
@@ -128,7 +126,7 @@
     "sub": "Three rotations for the same area and the same priorities.",
     "semZona": "Choose the area in step 1 first.",
     "semCultura": "Choose last season's crop in step 2 first.",
-    "aCaminho": "Change the rain scenario in the clock and watch the scores move."
+    "aCaminho": "The clock above uses NASA data for this area. Change the rain scenario and watch the scores below move."
   },
   "clima": {
     "titulo": "The year of the land in this area",
@@ -190,10 +188,7 @@
     "atrasoNota": "With the rain delayed, the season now starts in {mes}.",
     "aviso": "This scenario was also applied to the scores below.",
     "regra": "Rings: each month is a sector, with height proportional to the value (rain in mm; soil and temperature relative to the local maximum and minimum). Crops: they start in the month the rainy season begins and last the shortest EcoCrop cycle; the faded part runs to the longest cycle. Months without a crop are bare soil. Because the EcoCrop cycle range is wide (maize: 65 to 365 days), the solid arc uses the middle of the range and the faded part runs to the longest cycle; each crop's sheet has both limits.",
-    "regraCenario": "The scenarios change rain only: soil moisture and temperature stay as measured, because we have no model that links them reliably.",
-    "frase": "Rain here falls from {inicio} to {fim}. For the other {n} months the field has no crop.",
-    "fraseUm": "Rain here falls from {inicio} to {fim}. Only 1 month has no crop.",
-    "numeros": "Rain {chuva} mm a year · season {inicio}–{fim}"
+    "regraCenario": "The scenarios change rain only: soil moisture and temperature stay as measured, because we have no model that links them reliably."
   },
   "resultado": {
     "atual": "Your current rotation",
@@ -209,7 +204,7 @@
     "criterios": "Criteria used",
     "regras": "How we score",
     "semDados": "no data",
-    "nota": "The score compares the three rotations with each other. It is not a harvest forecast.",
+    "nota": "The score compares the three rotations with each other. It is not a harvest forecast or a promise of results.",
     "notas": {
       "maoDeObra": "Labour does not change the score: we have no data on work requirements per crop. It is noted for local validation.",
       "irrigacao": "You have irrigation, so water weighs less in the score.",
@@ -233,21 +228,6 @@
       "diversidade": "Family diversity",
       "sim": "yes",
       "nao": "no"
-    },
-    "detalhe": "See why",
-    "sinaisNota": "Signals we calculate from the criteria. 0.75 or more = Good.",
-    "resumo": "{qual} scores highest for your priorities: {nota} of 100.",
-    "sinais": {
-      "agua": "Water",
-      "solo": "Soil",
-      "risco": "Risk"
-    },
-    "estados": {
-      "bom": "Good",
-      "atencao": "Watch",
-      "fraco": "Weak",
-      "alto": "High",
-      "sem": "No data"
     }
   },
   "motor": {
@@ -358,6 +338,5 @@
     "spaceapps": "NASA Space Apps Challenge 2026 — challenge and context of the Calumbo, Zango local event.",
     "spaceappsUrl": "https://www.spaceappschallenge.org/",
     "voltar": "Back to the start"
-  },
-  "mais": "Read more"
+  }
 }

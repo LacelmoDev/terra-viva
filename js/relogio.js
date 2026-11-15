@@ -148,7 +148,6 @@ export function criarRelogio(alvo, { aoMudarCenario } = {}) {
   let centroNome = null;
   let centroDetalhe = null;
   let resumo = null;
-  let numeros = null;
   let aviso = null;
   let controles = {};
 
@@ -213,9 +212,6 @@ export function criarRelogio(alvo, { aoMudarCenario } = {}) {
     resumo.className = "relogio__resumo";
     resumo.setAttribute("aria-live", "polite");
 
-    numeros = document.createElement("p");
-    numeros.className = "relogio__numeros";
-
     aviso = document.createElement("p");
     aviso.className = "relogio__aviso";
     aviso.hidden = true;
@@ -231,24 +227,9 @@ export function criarRelogio(alvo, { aoMudarCenario } = {}) {
     ].forEach(([chave, chaveTexto, reserva]) => {
       const item = document.createElement("li");
       item.className = "relogio__legenda-item relogio__legenda-item--" + chave;
-
-      // Ícone próprio para cada anel de dados; marca de cor para os outros dois.
-      const icone = { chuva: "i-agua", solo: "i-solo", temp: "i-calor" }[chave];
-      let marca;
-      if (icone) {
-        marca = document.createElementNS(NS, "svg");
-        marca.setAttribute("class", "relogio__marca relogio__marca--icone");
-        marca.setAttribute("viewBox", "0 0 24 24");
-        marca.setAttribute("aria-hidden", "true");
-        const uso = document.createElementNS(NS, "use");
-        uso.setAttribute("href", "#" + icone);
-        marca.append(uso);
-      } else {
-        marca = document.createElement("span");
-        marca.className = "relogio__marca";
-        marca.setAttribute("aria-hidden", "true");
-      }
-
+      const marca = document.createElement("span");
+      marca.className = "relogio__marca";
+      marca.setAttribute("aria-hidden", "true");
       const rotulo = document.createElement("span");
       rotulo.textContent = texto(chaveTexto, reserva);
       item.append(marca, rotulo);
@@ -257,7 +238,7 @@ export function criarRelogio(alvo, { aoMudarCenario } = {}) {
 
     const textoCaixa = document.createElement("div");
     textoCaixa.className = "relogio__texto";
-    textoCaixa.append(resumo, numeros, aviso, legenda);
+    textoCaixa.append(resumo, aviso, legenda);
 
     const nota = document.createElement("p");
     nota.className = "relogio__regra";
@@ -531,19 +512,11 @@ export function criarRelogio(alvo, { aoMudarCenario } = {}) {
   function desenharResumo(clima, calendario, cultura, rotacao) {
     const epoca = clima.indicadores.epocaChuvosa ?? {};
     const nua = calendario.ocupados.filter((v) => !v).length;
-
-    // Uma frase grande, feita com os números que já cá estão.
-    const chaveFrase = nua === 1 ? "relogio.fraseUm" : "relogio.frase";
-    resumo.textContent = fmt(texto(chaveFrase, ""), {
-      inicio: mesNaFrase(calendario.inicio),
-      fim: mesNaFrase(epoca.fimMes ?? calendario.inicio),
-      n: nua,
-    });
-
-    numeros.textContent = fmt(texto("relogio.numeros", ""), {
+    resumo.textContent = fmt(texto("relogio.resumo", ""), {
       chuva: numero.format(clima.indicadores.chuvaAnual?.media_mm ?? 0),
       inicio: mesNaFrase(calendario.inicio),
       fim: mesNaFrase(epoca.fimMes ?? calendario.inicio),
+      n: nua,
     });
 
     svg.setAttribute(

@@ -1,0 +1,12 @@
+/* Terra Viva — extras: município, ouvir e partilhar. Texto grande, toques de 48 px. */
+.muni { margin: 0 0 1.5rem; padding: 1rem; border: 1px solid var(--traco-forte, #c9b99a); border-radius: 10px; background: var(--creme-alto, #fbf7ee); }
+.muni__titulo { margin: 0 0 .75rem; font-size: 1.25rem; }
+.muni__campo { display: block; margin: 0 0 .75rem; }
+.muni__rotulo { display: block; margin-bottom: .25rem; font-weight: 700; font-size: 1rem; }
+.muni select { width: 100%; min-height: 48px; padding: .5rem .75rem; font: inherit; font-size: 1.125rem; color: inherit; background: var(--creme, #f3ebdc); border: 1px solid var(--traco-forte, #c9b99a); border-radius: 8px; }
+.muni select:disabled { opacity: .55; }
+.muni__nota { margin: .25rem 0 0; font-size: 1.0625rem; line-height: 1.45; }
+.muni__nota[data-longe="1"] { padding-left: .75rem; border-left: 4px solid var(--dourado, #c9911f); }
+.extras-barra { display: flex; flex-wrap: wrap; align-items: center; gap: .6rem; margin: 0 0 1.25rem; }
+.extras-barra .botao { min-height: 48px; font-size: 1.0625rem; }
+.extras-barra__msg { font-size: 1rem; font-weight: 600; }
