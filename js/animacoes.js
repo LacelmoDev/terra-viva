@@ -14,11 +14,17 @@ const NS = "http://www.w3.org/2000/svg";
 const CX = 350;
 const CY = 350;
 
-if (!window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
-  iniciar();
-}
+// Com movimento reduzido não se anima nada, mas o que é informação — o
+// marcador do dia de hoje no relógio — continua a aparecer, parado.
+const reduzido = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+iniciar(reduzido);
 
-function iniciar() {
+function iniciar(semMovimento) {
+  if (semMovimento) {
+    relogioAnimado(true);
+    return;
+  }
+
   document.documentElement.classList.add("tv-anima");
 
   progressoLeitura();
@@ -28,7 +34,7 @@ function iniciar() {
   direcaoDosPassos();
   sinaisDoMapa();
   cartoesDoResultado();
-  relogioAnimado();
+  relogioAnimado(false);
 }
 
 // Uma só fila de fotogramas para todos os efeitos de scroll.
@@ -241,7 +247,7 @@ function contarNota(nota) {
 
 // ---------- Relógio: onda de setores, marcador do agora, pulso ----------
 
-function relogioAnimado() {
+function relogioAnimado(semMovimento) {
   const conteudo = document.getElementById("relogio-conteudo");
   if (!conteudo) return;
 
@@ -257,10 +263,12 @@ function relogioAnimado() {
     let mudou = false;
     svg.querySelectorAll(".relogio__camada:not([data-tv])").forEach((camada) => {
       camada.dataset.tv = "1";
-      camada.classList.add("tv-onda");
-      camada
-        .querySelectorAll(".relogio__setor")
-        .forEach((setor, indice) => setor.style.setProperty("--k", String(indice)));
+      if (!semMovimento) {
+        camada.classList.add("tv-onda");
+        camada
+          .querySelectorAll(".relogio__setor")
+          .forEach((setor, indice) => setor.style.setProperty("--k", String(indice)));
+      }
       mudou = true;
     });
 
@@ -268,9 +276,11 @@ function relogioAnimado() {
     // chamar esta função para sempre.
     if (mudou) {
       marcarAgora(svg);
-      svg.classList.remove("tv-pulso");
-      void svg.getBoundingClientRect();
-      svg.classList.add("tv-pulso");
+      if (!semMovimento) {
+        svg.classList.remove("tv-pulso");
+        void svg.getBoundingClientRect();
+        svg.classList.add("tv-pulso");
+      }
     }
 
     porDentro = false;

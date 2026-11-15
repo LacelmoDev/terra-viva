@@ -282,7 +282,8 @@
     transform: none;
     translate: none;
   }
-  .relogio__agora {
-    display: none;
+  /* O marcador do dia de hoje é informação: fica, sem pulso. */
+  .relogio__agora line {
+    opacity: 0.4;
   }
 }
