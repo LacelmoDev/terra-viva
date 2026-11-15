@@ -73,7 +73,7 @@ body {
   font-family: var(--fonte-texto);
   font-size: var(--t-corpo);
   line-height: var(--alt-linha);
-  font-weight: 400;
+  font-weight: var(--peso-corpo);
   -webkit-font-smoothing: antialiased;
   text-rendering: optimizeLegibility;
   overflow-x: hidden;
@@ -114,7 +114,7 @@ h2,
 h3,
 h4 {
   font-family: var(--fonte-titulo);
-  font-weight: 600;
+  font-weight: 700;
   line-height: var(--alt-titulo);
   letter-spacing: -0.015em;
   font-variation-settings: "SOFT" 24, "WONK" 1;
@@ -244,8 +244,46 @@ ol[role="list"] {
 .sub {
   font-size: var(--t-corpo);
   color: var(--tinta-suave);
-  max-width: 58ch;
+  max-width: 52ch;
   margin-top: 0.85rem;
+}
+
+/* "Saber mais": o detalhe existe, mas não ocupa o ecrã todo. */
+.saber-mais {
+  margin-top: 0.9rem;
+  border-top: 1px solid var(--traco-fraco);
+}
+.saber-mais > summary {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  min-height: var(--toque);
+  cursor: pointer;
+  list-style: none;
+  font-size: var(--t-peq);
+  font-weight: var(--peso-forte);
+  color: var(--terra);
+}
+.saber-mais > summary::-webkit-details-marker {
+  display: none;
+}
+.saber-mais > summary::before {
+  content: "";
+  width: 8px;
+  height: 8px;
+  border-right: 2px solid currentColor;
+  border-bottom: 2px solid currentColor;
+  transform: rotate(-45deg);
+  flex: none;
+  transition: transform var(--d-rapida) var(--curva);
+}
+.saber-mais[open] > summary::before {
+  transform: rotate(45deg);
+}
+.saber-mais p {
+  font-size: var(--t-peq);
+  color: var(--tinta-suave);
+  margin-bottom: 0.8rem;
 }
 
 .micro {

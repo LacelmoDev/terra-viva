@@ -1,0 +1,496 @@
+/* ==========================================================================
+   Terra Viva — legibilidade e camadas
+   Uma camada por cima do que já existe: letras maiores, alvos de 48 px,
+   o essencial à vista nos cartões e o detalhe recolhido.
+   ========================================================================== */
+
+/* ---------- Textos de leitura com mais presença ---------- */
+.hero__sub {
+  font-size: clamp(1.125rem, 1.05rem + 0.35vw, 1.25rem);
+  color: #e2dac9;
+  max-width: 40ch;
+}
+.sub {
+  color: var(--tinta-suave);
+}
+.rodape p,
+.clima__lista,
+.rotacao__campo ul,
+.evidencias {
+  font-size: 1rem;
+}
+.aviso-fixo,
+.nota-marco,
+.resultado__nota,
+.mapa__fonte {
+  font-size: 0.9375rem;
+}
+.passo__cabeca h2 {
+  font-size: clamp(2rem, 5vw, 2.9rem);
+}
+.eyebrow {
+  font-size: 0.8125rem;
+  letter-spacing: 0.16em;
+}
+
+/* ---------- Alvos de toque: 48 px no mínimo ---------- */
+.zona {
+  min-height: 64px;
+  font-size: 1rem;
+}
+.solo__opcao {
+  min-height: 52px;
+}
+.cultura {
+  min-height: 112px;
+  font-size: 0.9375rem;
+  gap: 0.5rem;
+}
+.cultura svg {
+  width: 34px;
+  height: 34px;
+}
+.segmento {
+  font-size: 1rem;
+}
+.trilho__num {
+  font-size: 1.6rem;
+}
+.trilho__rotulo {
+  font-size: 0.9375rem;
+}
+
+/* ---------- Estado escolhido: visto, não só cor ---------- */
+.relogio__regra,
+.clima__nota-figura,
+.nota-marco,
+.mapa__fonte,
+.relogio__aviso {
+  font-size: 0.8125rem;
+}
+
+.relogio__numeros {
+  font-size: 0.9375rem;
+  color: var(--tinta-suave);
+  font-weight: 500;
+}
+.relogio__marca--icone {
+  width: 22px;
+  height: 22px;
+  background: none;
+  border-radius: 0;
+  box-shadow: none;
+  transform: none;
+  color: var(--tinta-suave);
+}
+.relogio__legenda-item--chuva .relogio__marca--icone {
+  color: var(--agua);
+}
+.relogio__legenda-item--solo .relogio__marca--icone {
+  color: var(--terra-clara);
+}
+.relogio__legenda-item--temp .relogio__marca--icone {
+  color: var(--dourado);
+}
+
+.cultura {
+  position: relative;
+}
+.cultura[aria-pressed="true"]::after {
+  position: absolute;
+  top: 0.35rem;
+  right: 0.4rem;
+  margin: 0;
+}
+
+.cultura[aria-pressed="true"]::after,
+.zona[aria-pressed="true"]::after,
+.solo__opcao[aria-pressed="true"]::after {
+  content: "";
+  width: 0.5em;
+  height: 0.28em;
+  border-left: 2.5px solid currentColor;
+  border-bottom: 2.5px solid currentColor;
+  transform: rotate(-45deg) translateY(-0.12em);
+  margin-left: 0.4em;
+  flex: none;
+}
+.cultura[aria-pressed="true"] {
+  box-shadow: inset 0 0 0 2px currentColor;
+}
+.zona[aria-pressed="true"],
+.solo__opcao[aria-pressed="true"] {
+  box-shadow: inset 0 0 0 2px currentColor;
+}
+.zona[aria-pressed="true"]::after {
+  position: absolute;
+  right: 0.7rem;
+  top: 0.85rem;
+}
+.zona {
+  position: relative;
+  padding-right: 2rem;
+}
+
+/* ---------- Indicador de progresso dos passos ---------- */
+.progresso-passos {
+  display: flex;
+  align-items: baseline;
+  gap: 0.5rem;
+  margin-bottom: 0.75rem;
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--tinta);
+}
+.progresso-passos span {
+  font-weight: 500;
+  color: var(--tinta-suave);
+}
+
+/* ---------- Cartões de rotação: o essencial à vista ---------- */
+.rotacao__topo {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 0.75rem;
+}
+.rotacao__ponto {
+  font-size: clamp(2.5rem, 8vw, 3.25rem);
+  line-height: 0.9;
+  font-weight: 600;
+  color: var(--terra);
+}
+.rotacao__ponto small {
+  display: block;
+  font-family: var(--fonte-texto);
+  font-size: 0.8125rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--tinta-suave);
+  margin-top: 0.3rem;
+  text-align: right;
+}
+.prioridade__nome {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.55rem;
+}
+.prioridade__icone {
+  width: 28px;
+  height: 28px;
+  flex: none;
+  color: var(--verde-folha-escuro);
+}
+.solo__opcao {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+}
+.solo__icone {
+  width: 26px;
+  height: 26px;
+  flex: none;
+  color: var(--tinta-suave);
+}
+.solo__opcao[aria-pressed="true"] .solo__icone {
+  color: #f3ebdc;
+}
+[data-tema="campo"] .solo__opcao[aria-pressed="true"] .solo__icone {
+  color: #121a15;
+}
+
+.rotacao__sequencia {
+  margin-top: 1rem;
+  gap: 0.5rem;
+}
+.rotacao__epoca {
+  font-size: 1.0625rem;
+}
+.rotacao__epoca svg {
+  width: 32px;
+  height: 32px;
+}
+.rotacao__epoca .ep {
+  width: 5.2rem;
+  font-size: 0.8125rem;
+}
+.nav-inferior__item {
+  font-size: 0.75rem;
+}
+.rotacao__frase {
+  margin-top: 0.9rem;
+  font-size: 1.0625rem;
+  font-weight: 600;
+  line-height: 1.4;
+}
+
+/* Sinais: ícone + palavra + estado escrito (a cor nunca é a única pista). */
+.sinais {
+  list-style: none;
+  padding: 0;
+  margin: 1.1rem 0 0;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 0.4rem;
+}
+.sinal {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  grid-template-areas:
+    "icone nome"
+    "icone estado";
+  align-items: center;
+  gap: 0 0.45rem;
+  padding: 0.5rem 0.55rem;
+  border: 1px solid var(--traco);
+  border-left-width: 4px;
+  border-radius: var(--raio-1);
+  background: var(--superficie);
+  min-width: 0;
+}
+.sinal__icone {
+  grid-area: icone;
+  width: 26px;
+  height: 26px;
+  flex: none;
+  color: var(--tinta-suave);
+}
+.sinal__nome {
+  grid-area: nome;
+  font-size: 0.8125rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--tinta-suave);
+  font-weight: 700;
+}
+.sinal__estado {
+  grid-area: estado;
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--tinta);
+}
+.sinal--bom {
+  border-left-color: var(--verde-folha-escuro);
+  background: rgba(110, 138, 94, 0.1);
+}
+.sinal--bom .sinal__icone {
+  color: var(--verde-folha-escuro);
+}
+.sinal--atencao {
+  border-left-color: var(--dourado-forte);
+  background: rgba(201, 145, 31, 0.12);
+}
+.sinal--atencao .sinal__icone {
+  color: var(--dourado-forte);
+}
+.sinal--fraco,
+.sinal--alto {
+  border-left-color: var(--terra);
+  background: rgba(166, 60, 34, 0.1);
+}
+.sinal--fraco .sinal__icone,
+.sinal--alto .sinal__icone {
+  color: var(--terra-forte);
+}
+.sinal--sem {
+  border-left-color: var(--traco-forte);
+  background: transparent;
+}
+[data-tema="campo"] .sinal {
+  background: var(--superficie-2);
+}
+[data-tema="campo"] .sinal--bom .sinal__icone {
+  color: var(--verde-folha);
+}
+.sinais__nota {
+  margin-top: 0.45rem;
+  font-size: 0.8125rem;
+  color: var(--tinta-fraca);
+}
+
+/* Detalhe recolhido: tudo o que já existia continua aqui. */
+.rotacao__detalhe {
+  margin-top: 1rem;
+  border-top: 1px solid var(--traco);
+}
+.rotacao__detalhe > summary {
+  display: flex;
+  align-items: center;
+  gap: 0.55rem;
+  min-height: var(--toque);
+  cursor: pointer;
+  list-style: none;
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--terra);
+}
+.rotacao__detalhe > summary::-webkit-details-marker {
+  display: none;
+}
+.rotacao__detalhe > summary::before {
+  content: "";
+  width: 8px;
+  height: 8px;
+  border-right: 2px solid currentColor;
+  border-bottom: 2px solid currentColor;
+  transform: rotate(-45deg);
+  flex: none;
+  transition: transform var(--d-rapida) var(--curva);
+}
+.rotacao__detalhe[open] > summary::before {
+  transform: rotate(45deg);
+}
+.rotacao__detalhe .rotacao__campo:first-of-type {
+  border-top: 0;
+  padding-top: 0;
+}
+
+/* Linha-resumo acima dos cartões */
+.resultado__resumo {
+  font-size: clamp(1.25rem, 3.6vw, 1.5rem);
+  font-weight: 700;
+  line-height: 1.35;
+  padding: 0.85rem 0 0.85rem 1rem;
+  border-left: 5px solid var(--terra);
+  background: var(--realce);
+  margin-bottom: 1rem;
+}
+
+/* ---------- Relógio: frase grande e legenda com ícones ---------- */
+.relogio__resumo {
+  font-size: clamp(1.1875rem, 3.4vw, 1.375rem);
+  line-height: 1.35;
+}
+.relogio__legenda {
+  font-size: 0.9375rem;
+  gap: 0.5rem 1rem;
+}
+.relogio__marca {
+  width: 16px;
+  height: 16px;
+  border-radius: 3px;
+}
+.relogio__legenda-item--chuva .relogio__marca {
+  border-radius: 50% 50% 50% 0;
+  transform: rotate(-45deg);
+}
+.relogio__legenda-item--solo .relogio__marca {
+  border-radius: 2px;
+  height: 10px;
+  background: linear-gradient(var(--terra-clara) 50%, var(--dourado) 50%);
+}
+.relogio__legenda-item--temp .relogio__marca {
+  border-radius: 50%;
+  box-shadow: 0 0 0 2px rgba(201, 145, 31, 0.3);
+}
+.relogio__legenda-item--cultura .relogio__marca {
+  border-radius: 50% 0 50% 0;
+}
+.relogio__legenda-item--terraNua .relogio__marca {
+  border-radius: 0;
+}
+
+/* ---------- Barra de navegação inferior (telemóvel) ---------- */
+.nav-inferior {
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 45;
+  display: none;
+  background: var(--creme-alto);
+  border-top: 1px solid var(--traco-forte);
+  box-shadow: 0 -6px 18px rgba(34, 26, 20, 0.08);
+}
+.nav-inferior__item {
+  flex: 1;
+  display: grid;
+  justify-items: center;
+  gap: 0.15rem;
+  min-height: 60px;
+  padding: 0.4rem 0.25rem 0.5rem;
+  font-size: 0.6875rem;
+  font-weight: 700;
+  line-height: 1.15;
+  text-align: center;
+  color: var(--tinta-suave);
+  border-top: 3px solid transparent;
+}
+.nav-inferior__num {
+  display: grid;
+  place-items: center;
+  width: 26px;
+  height: 26px;
+  border: 1.5px solid currentColor;
+  border-radius: 50%;
+  font-size: 0.8125rem;
+  font-weight: 700;
+}
+.nav-inferior__item[aria-current="step"] {
+  color: var(--terra);
+  border-top-color: var(--terra);
+}
+.nav-inferior__item[aria-current="step"] .nav-inferior__num {
+  background: var(--terra);
+  border-color: var(--terra);
+  color: #fbf7ee;
+}
+@media (max-width: 640px) {
+  .nav-inferior {
+    display: flex;
+  }
+  body {
+    padding-bottom: calc(72px + 8px);
+  }
+  .aviso-offline {
+    bottom: 72px;
+  }
+}
+@media (min-width: 641px) {
+  .nav-inferior {
+    display: none;
+  }
+}
+
+/* ---------- Contraste reforçado no escuro ---------- */
+[data-tema="campo"] .sinal__nome,
+[data-tema="campo"] .sinais__nota {
+  color: #c9c1b1;
+}
+[data-tema="campo"] .rotacao__ponto {
+  color: var(--terra-forte);
+}
+
+/* ---------- Ecrã pequeno: nada encostado às bordas ---------- */
+/* No hero o fundo é sempre escuro: o detalhe segue essas cores. */
+.hero .saber-mais {
+  border-top-color: rgba(243, 235, 220, 0.18);
+  max-width: 44ch;
+}
+.hero .saber-mais > summary {
+  color: var(--dourado-claro);
+}
+.hero .saber-mais p {
+  color: #cfc6b4;
+}
+
+@media (max-width: 420px) {
+  .sinais {
+    gap: 0.3rem;
+  }
+  .sinal {
+    padding: 0.45rem 0.4rem;
+    grid-template-columns: 1fr;
+    grid-template-areas:
+      "nome"
+      "estado";
+    border-left-width: 4px;
+  }
+  .sinal__icone {
+    display: none;
+  }
+  .rotacao__ponto {
+    font-size: 2.6rem;
+  }
+}

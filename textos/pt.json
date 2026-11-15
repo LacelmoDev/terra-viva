@@ -31,7 +31,7 @@
     "titulo": "O calendário",
     "titulo2": "vivo",
     "titulo3": "da tua terra.",
-    "sub": "Escolhe a tua zona, diz o que plantaste e o que te importa. A Terra Viva lê os dados da NASA para o teu ponto do mapa, mostra o ano da terra mês a mês e compara três rotações de culturas — com a evidência, as lacunas e os riscos à vista.",
+    "sub": "Escolhe a zona, o que plantaste e o que te importa. Vês o ano da terra e três rotações para comparar.",
     "cta1": "Começar pelo mapa",
     "cta2": "Como funciona",
     "factos": {
@@ -39,46 +39,48 @@
       "dados": "Dados NASA POWER, séries longas",
       "offline": "Funciona sem internet"
     },
-    "motivoLegenda": "O Relógio da Terra — um ano da tua zona, mês a mês"
+    "motivoLegenda": "O Relógio da Terra — um ano da tua zona, mês a mês",
+    "subMais": "Escolhe a tua zona, diz o que plantaste e o que te importa. A Terra Viva lê os dados da NASA para o teu ponto do mapa, mostra o ano da terra mês a mês e compara três rotações de culturas — com a evidência, as lacunas e os riscos à vista."
   },
   "confianca": {
     "titulo": "Nenhum número sem origem",
     "sub": "Cada valor no ecrã leva uma de três etiquetas. Nunca aparecem misturadas.",
     "nasa": {
       "nome": "Dado NASA",
-      "texto": "Chuva, temperatura, humidade do solo e radiação para o teu ponto, tal como o satélite e a reanálise os registam."
+      "texto": "Chuva, temperatura, humidade do solo e radiação do teu ponto, como o satélite os regista."
     },
     "calculado": {
       "nome": "Calculado por nós",
-      "texto": "Indicadores derivados dos dados, com a regra escrita ao lado. Podes discordar da regra e ver o que muda."
+      "texto": "Indicadores derivados dos dados, com a regra escrita ao lado."
     },
     "conhecimento": {
       "nome": "Conhecimento agronómico",
-      "texto": "Ciclos, necessidades de água e práticas das culturas, sempre com a fonte citada."
+      "texto": "Ciclos e necessidades das culturas, sempre com a fonte."
     }
   },
   "fluxo": {
     "etiqueta": "Quatro passos",
     "titulo": "Da tua machamba à comparação",
-    "sub": "Tudo num telemóvel, com toques grandes e texto legível. Podes voltar atrás em qualquer passo.",
+    "sub": "Quatro toques grandes. Podes voltar atrás quando quiseres.",
     "passos": {
       "1": "Onde estás",
       "2": "O que plantaste",
       "3": "O que te importa",
       "4": "A tua comparação"
-    }
+    },
+    "passoDe": "Passo {n} de 4"
   },
   "passo1": {
     "etiqueta": "Passo 01",
     "titulo": "Onde estás?",
-    "sub": "Toca no mapa de Angola ou escolhe a zona na lista.",
+    "sub": "Toca no mapa ou escolhe a zona na lista.",
     "listaTitulo": "Zonas pré-carregadas",
     "escolhida": "Zona escolhida",
     "nenhuma": "Ainda não escolheste nenhuma zona.",
     "fonteMapa": "Contorno: Natural Earth (domínio público). Coordenadas: OpenStreetMap / Nominatim (ODbL).",
     "solo": {
       "titulo": "Como é o teu solo?",
-      "sub": "Escolhe a textura que conheces da tua terra. É opcional e podes mudar depois.",
+      "sub": "Escolhe a textura da tua terra. Podes mudar depois.",
       "arenoso": "Arenoso",
       "franco": "Franco",
       "argiloso": "Argiloso",
@@ -89,7 +91,7 @@
   "passo2": {
     "etiqueta": "Passo 02",
     "titulo": "O que plantaste?",
-    "sub": "Escolhe a cultura da última época e, se te lembrares, a da época anterior.",
+    "sub": "Escolhe a cultura da última época. A anterior é opcional.",
     "ultima": "Última época",
     "anterior": "Época anterior (opcional)",
     "pousio": "Pousio",
@@ -99,7 +101,7 @@
   "passo3": {
     "etiqueta": "Passo 03",
     "titulo": "O que te importa?",
-    "sub": "Dá peso ao que decide por ti. Três posições por prioridade, sem números para decorar.",
+    "sub": "Diz o que mais te importa: água, rendimento, solo ou risco.",
     "prioridades": {
       "agua": "Água",
       "rendimento": "Rendimento",
@@ -126,7 +128,7 @@
     "sub": "Três rotações para a mesma zona e as mesmas prioridades.",
     "semZona": "Falta escolher a zona no passo 1.",
     "semCultura": "Falta escolher a cultura da última época no passo 2.",
-    "aCaminho": "O relógio em cima usa os dados da NASA para esta zona. Muda o cenário de chuva e vê as pontuações abaixo mudarem."
+    "aCaminho": "Muda o cenário de chuva no relógio e vê as pontuações mudarem."
   },
   "clima": {
     "titulo": "O ano da terra nesta zona",
@@ -188,7 +190,10 @@
     "atrasoNota": "Com a chuva atrasada, o início da época passa para {mes}.",
     "aviso": "Este cenário também foi aplicado às pontuações abaixo.",
     "regra": "Anéis: cada mês é um setor, com altura proporcional ao valor (chuva em mm; solo e temperatura relativos ao máximo e mínimo locais). Culturas: começam no mês de início da época chuvosa e duram o ciclo mínimo da EcoCrop; a parte esbatida vai até ao ciclo máximo. Os meses sem cultura são terra nua. Como a faixa de ciclo da EcoCrop é larga (milho: 65 a 365 dias), o arco cheio usa o meio da faixa e a parte esbatida vai até ao ciclo máximo; a ficha de cada cultura tem os dois limites.",
-    "regraCenario": "Os cenários mudam só a chuva: a humidade do solo e a temperatura ficam como foram medidas, porque não temos um modelo que as ligue com rigor."
+    "regraCenario": "Os cenários mudam só a chuva: a humidade do solo e a temperatura ficam como foram medidas, porque não temos um modelo que as ligue com rigor.",
+    "frase": "Aqui chove de {inicio} a {fim}. Nos outros {n} meses o campo fica sem cultura.",
+    "fraseUm": "Aqui chove de {inicio} a {fim}. Só 1 mês fica sem cultura.",
+    "numeros": "Chuva {chuva} mm por ano · época {inicio}–{fim}"
   },
   "resultado": {
     "atual": "A tua rotação atual",
@@ -204,7 +209,7 @@
     "criterios": "Critérios usados",
     "regras": "Como pontuamos",
     "semDados": "sem dados",
-    "nota": "A pontuação compara as três rotações entre si. Não é previsão de colheita nem promessa de resultado.",
+    "nota": "A pontuação compara as três rotações entre si. Não é previsão de colheita.",
     "notas": {
       "maoDeObra": "A mão de obra não altera a pontuação: não temos dados de exigência de trabalho por cultura. Fica anotado para a validação local.",
       "irrigacao": "Tens irrigação, por isso a água pesa menos na pontuação.",
@@ -228,6 +233,21 @@
       "diversidade": "Diversidade de famílias",
       "sim": "sim",
       "nao": "não"
+    },
+    "detalhe": "Ver porquê",
+    "sinaisNota": "Sinais calculados por nós a partir dos critérios. 0,75 ou mais = Bom.",
+    "resumo": "{qual} tem a pontuação mais alta para as tuas prioridades: {nota} de 100.",
+    "sinais": {
+      "agua": "Água",
+      "solo": "Solo",
+      "risco": "Risco"
+    },
+    "estados": {
+      "bom": "Bom",
+      "atencao": "Atenção",
+      "fraco": "Fraco",
+      "alto": "Alto",
+      "sem": "Sem dado"
     }
   },
   "motor": {
@@ -338,5 +358,6 @@
     "spaceapps": "NASA Space Apps Challenge 2026 — desafio e enquadramento do evento local de Calumbo, Zango.",
     "spaceappsUrl": "https://www.spaceappschallenge.org/",
     "voltar": "Voltar ao início"
-  }
+  },
+  "mais": "Saber mais"
 }

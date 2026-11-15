@@ -363,8 +363,8 @@ function sincronizarInterface() {
 // ---------- Navegação ----------
 
 function ligarTrilho() {
-  elementos.trilho.addEventListener("click", (evento) => {
-    const botao = evento.target.closest("[data-ir]");
+  document.addEventListener("click", (evento) => {
+    const botao = evento.target.closest("#trilho [data-ir], #nav-inferior [data-ir]");
     if (!botao) return;
     irPara(Number(botao.dataset.ir), true);
   });
@@ -400,6 +400,8 @@ function irPara(numero, atualizarHash) {
   elementos.anterior.disabled = passo === 1;
   elementos.seguinte.hidden = passo === TOTAL;
 
+  marcarProgresso(passo);
+
   guardarEstado();
   if (passo === TOTAL) atualizarResultado();
 
@@ -409,6 +411,24 @@ function irPara(numero, atualizarHash) {
     const caixa = elementos.fluxo.getBoundingClientRect();
     if (caixa.top < 0) elementos.fluxo.scrollIntoView({ block: "start" });
   }
+}
+
+// "Passo 2 de 4" e a barra inferior do telemóvel dizem sempre onde estás.
+function marcarProgresso(passo) {
+  const indicador = document.getElementById("progresso-passos");
+  if (indicador) {
+    const forte = indicador.querySelector("strong");
+    const rotulo = indicador.querySelector("[data-i18n]");
+    if (forte) {
+      forte.textContent = texto("fluxo.passoDe", "Passo {n} de 4").replace("{n}", String(passo));
+    }
+    if (rotulo) rotulo.textContent = texto("fluxo.passos." + passo, rotulo.textContent);
+  }
+
+  document.querySelectorAll("#nav-inferior [data-ir]").forEach((botao) => {
+    if (Number(botao.dataset.ir) === passo) botao.setAttribute("aria-current", "step");
+    else botao.removeAttribute("aria-current");
+  });
 }
 
 // ---------- Resultado ----------
