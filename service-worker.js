@@ -5,7 +5,7 @@
 // a substituição das caches antigas.
 // ============================================================================
 
-const VERSAO = "terra-viva-v20";
+const VERSAO = "terra-viva-v22";
 
 const SHELL = [
   "./",
@@ -18,7 +18,10 @@ const SHELL = [
   "./css/base.css",
   "./css/componentes.css",
   "./css/relogio.css",
+  "./css/animacoes.css",
+  "./css/legibilidade.css",
   "./js/app.js",
+  "./js/animacoes.js",
   "./js/clima.js",
   "./js/dados.js",
   "./js/mapa.js",

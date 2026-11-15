@@ -1,0 +1,291 @@
+/* ==========================================================================
+   Terra Viva — animações e lapidação (camada aditiva)
+   Nada aqui é preciso para ler ou usar o site: se este ficheiro não carregar,
+   tudo o que esconderia um elemento está atrás de html.tv-anima, que só
+   js/animacoes.js põe. Só transform e opacity (e uma sombra nos cartões).
+   Movimento com sentido de terra: chuva, solo, calor, estações.
+   ========================================================================== */
+
+/* ---------- Barra de progresso de leitura ---------- */
+.tv-progresso {
+  position: fixed;
+  inset: 0 0 auto 0;
+  height: 2px;
+  z-index: 61;
+  pointer-events: none;
+  background: var(--terra);
+  transform: scaleX(var(--p, 0));
+  transform-origin: 0 50%;
+  opacity: 0;
+  transition: opacity 260ms linear;
+}
+.tv-progresso--visivel {
+  opacity: 0.9;
+}
+
+/* ---------- Hero: garoa por cima da chuva desenhada ---------- */
+.tv-garoa {
+  position: absolute;
+  inset: -10% 0;
+  z-index: 0;
+  pointer-events: none;
+  opacity: 0.3;
+  background-image: repeating-linear-gradient(
+      101deg,
+      transparent 0 11px,
+      rgba(216, 208, 190, 0.14) 11px 12px
+    ),
+    repeating-linear-gradient(96deg, transparent 0 37px, rgba(216, 208, 190, 0.09) 37px 38px);
+  -webkit-mask-image: linear-gradient(to bottom, transparent, #000 18%, #000 82%, transparent);
+  mask-image: linear-gradient(to bottom, transparent, #000 18%, #000 82%, transparent);
+}
+
+/* ---------- Relógio da Terra ---------- */
+.relogio__svg {
+  transform-origin: 50% 50%;
+}
+.relogio__agora line {
+  fill: none;
+  stroke: var(--tinta);
+  stroke-width: 1.2;
+  stroke-linecap: round;
+  opacity: 0.32;
+}
+.relogio__agora .relogio__agora-ponta {
+  stroke-width: 2.4;
+  opacity: 0.6;
+}
+.relogio__agora circle {
+  fill: var(--tinta);
+  opacity: 0.8;
+}
+
+/* ---------- Micro-interacções (valem com e sem movimento reduzido) ---------- */
+:is(.zona, .cultura, .solo__opcao, .segmento, .pin, .trilho__item) {
+  touch-action: manipulation;
+}
+:is(.zona, .cultura, .solo__opcao, .segmento, .pin):active {
+  transform: scale(0.97);
+}
+.trilho__item:active {
+  transform: translateY(1px);
+}
+@media (hover: hover) {
+  .rotacao {
+    transition: translate 240ms var(--curva), box-shadow 240ms var(--curva);
+  }
+  .rotacao:hover {
+    translate: 0 -3px;
+    box-shadow: 0 10px 26px rgba(34, 26, 20, 0.1);
+  }
+  [data-tema="campo"] .rotacao:hover {
+    box-shadow: 0 10px 26px rgba(0, 0, 0, 0.45);
+  }
+  .cultura:hover svg,
+  .zona:hover {
+    translate: 0 -1px;
+  }
+}
+
+/* ==========================================================================
+   Movimento: só quando o sistema o permite
+   ========================================================================== */
+@media (prefers-reduced-motion: no-preference) {
+  /* --- Cabeçalho e hero --- */
+  html.tv-anima .hero__chuva {
+    animation: tv-vento 9s ease-in-out infinite alternate;
+    will-change: transform;
+  }
+  html.tv-anima .hero__motivo svg {
+    animation: tv-motivo-respira 11s ease-in-out infinite;
+    transform-origin: 50% 50%;
+  }
+
+  /* --- Trilho dos passos: progresso que avança --- */
+  html.tv-anima .trilho {
+    position: relative;
+  }
+  html.tv-anima .trilho::after {
+    content: "";
+    position: absolute;
+    left: -1px;
+    right: -1px;
+    bottom: -1px;
+    height: 2px;
+    background: var(--terra);
+    transform: scaleX(var(--p, 0.25));
+    transform-origin: 0 50%;
+    transition: transform 520ms var(--curva-saida);
+  }
+
+  /* --- Passos: ir em frente sobe, voltar atrás desce --- */
+  html.tv-anima #passos[data-direcao="tras"] .passo[data-ativo] {
+    animation-name: tv-passo-tras;
+  }
+
+  /* --- Mapa: pontos a emitir sinal --- */
+  html.tv-anima .pin:not([aria-pressed="true"])::before {
+    animation: tv-pin-pulsa 3.8s ease-out infinite;
+    animation-delay: calc(var(--k, 0) * 260ms);
+  }
+  html.tv-anima .mapa__rotulo.tv-novo strong {
+    animation: tv-rotulo-entra 420ms var(--curva-saida);
+    display: inline-block;
+  }
+
+  /* --- Resultado: cartões em sequência, barras a encher --- */
+  html.tv-anima .tv-cartoes .rotacao {
+    opacity: 0;
+    translate: 0 16px;
+    animation: tv-cartao-entra 620ms var(--curva-saida) forwards;
+    animation-delay: calc(var(--k, 0) * 85ms);
+  }
+  /* As barras têm classes próprias: a classe dos cartões é removida quando a
+     entrada acaba, e isso não pode deixá-las a meio. */
+  html.tv-anima .tv-barras .barra i {
+    transform: scaleX(0);
+    transform-origin: 0 50%;
+    transition: transform 680ms var(--curva-saida);
+    transition-delay: calc(var(--k, 0) * 55ms);
+  }
+  html.tv-anima .tv-barras.tv-cheias .barra i {
+    transform: scaleX(1);
+  }
+
+  /* --- Relógio: anéis em onda, terra nua a pulsar, pulso ao mudar --- */
+  html.tv-anima .relogio__camada.tv-onda .relogio__setor {
+    transform-box: view-box;
+    transform-origin: 350px 350px;
+    animation: tv-setor-entra 620ms var(--curva-saida) backwards;
+    animation-delay: calc(var(--k, 0) * 14ms);
+  }
+  html.tv-anima .relogio__terra-nua-setor {
+    animation: tv-respira 2.7s ease-in-out infinite;
+  }
+  html.tv-anima .relogio__svg.tv-pulso {
+    animation: tv-relogio-pulso 460ms var(--curva-saida);
+  }
+  html.tv-anima .relogio__agora {
+    animation: tv-agora-pulsa 4.6s ease-in-out infinite;
+  }
+
+  /* --- Pequenos toques de seleção --- */
+  html.tv-anima .segmento[aria-pressed="true"] {
+    animation: tv-seg-pop 260ms var(--curva-saida);
+  }
+  html.tv-anima .cultura[aria-pressed="true"] svg {
+    animation: tv-icone-pop 360ms var(--curva-saida);
+    transform-origin: 50% 50%;
+  }
+  html.tv-anima .zona[aria-pressed="true"] strong {
+    animation: tv-zona-entra 340ms var(--curva-saida);
+  }
+}
+
+/* ---------- Fotogramas ---------- */
+@keyframes tv-vento {
+  from {
+    transform: translate3d(0, 0, 0);
+  }
+  to {
+    transform: translate3d(-9px, 5px, 0);
+  }
+}
+@keyframes tv-motivo-respira {
+  50% {
+    transform: scale(1.014);
+  }
+}
+@keyframes tv-passo-tras {
+  from {
+    opacity: 0;
+    transform: translateY(-12px);
+  }
+}
+@keyframes tv-pin-pulsa {
+  0%,
+  70% {
+    transform: scale(1);
+  }
+  84% {
+    transform: scale(1.3);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+@keyframes tv-rotulo-entra {
+  from {
+    opacity: 0;
+    translate: 0 6px;
+  }
+}
+@keyframes tv-cartao-entra {
+  to {
+    opacity: 1;
+    translate: 0 0;
+  }
+}
+@keyframes tv-setor-entra {
+  from {
+    opacity: 0;
+    transform: scale(0.965);
+  }
+}
+@keyframes tv-respira {
+  0%,
+  100% {
+    opacity: 0.28;
+  }
+  50% {
+    opacity: 0.82;
+  }
+}
+@keyframes tv-relogio-pulso {
+  0% {
+    transform: scale(0.995);
+  }
+  60% {
+    transform: scale(1.004);
+  }
+  100% {
+    transform: none;
+  }
+}
+@keyframes tv-agora-pulsa {
+  50% {
+    opacity: 0.45;
+  }
+}
+@keyframes tv-seg-pop {
+  40% {
+    transform: scale(0.95);
+  }
+}
+@keyframes tv-icone-pop {
+  40% {
+    transform: scale(1.17) rotate(-4deg);
+  }
+}
+@keyframes tv-zona-entra {
+  from {
+    opacity: 0.35;
+    translate: 0 5px;
+  }
+}
+
+/* ---------- Movimento reduzido: nada disto corre ---------- */
+@media (prefers-reduced-motion: reduce) {
+  .tv-progresso {
+    transition: none;
+  }
+  :is(.zona, .cultura, .solo__opcao, .segmento, .pin, .trilho__item, .rotacao):active,
+  .rotacao:hover {
+    transform: none;
+    translate: none;
+  }
+  /* O marcador do dia de hoje é informação: fica, sem pulso. */
+  .relogio__agora line {
+    opacity: 0.4;
+  }
+}
