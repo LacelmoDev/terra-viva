@@ -1,0 +1,771 @@
+{
+  "versao": "1",
+  "atualizadoEm": "2026-11-14",
+  "instrucoes": "Folha para editar à mão. Cada campo traz 'fonte' (id de fonte ou TODO_FONTE) e, quando preciso, 'nota'. Para preencher um TODO_FACTO: pôr o valor, trocar a fonte por uma entrada de referencias.json e apagar a nota. Não apagar campos: o site lê-os pelo nome.",
+  "fonte": {
+    "nome": "FAO EcoCrop",
+    "descricao": "Base de requisitos ecológicos das culturas. Inclui família, ciclo, temperatura, chuva anual, pH, altitude e uso.",
+    "url": "https://ecocrop.apps.fao.org/ecocrop/srv/en/home",
+    "folha": "https://ecocrop.apps.fao.org/ecocrop/srv/en/dataSheet?id=<EcoPortCode>",
+    "copiaCsv": "https://raw.githubusercontent.com/OpenCLIM/ecocrop/main/EcoCrop_DB.csv",
+    "licenca": "FAO, uso com atribuição (cópia OpenCLIM, CC-BY-4.0)",
+    "consulta": "2026-11-14"
+  },
+  "referencias": {
+    "ecocrop": {
+      "nome": "FAO EcoCrop",
+      "url": "https://ecocrop.apps.fao.org/ecocrop/srv/en/home"
+    }
+  },
+  "culturas": [
+    {
+      "id": "milho",
+      "nome": "Milho",
+      "alias": [
+        "milho",
+        "maize"
+      ],
+      "nomeCientifico": "Zea mays",
+      "familia": {
+        "valor": "Gramineae (Poaceae)",
+        "fonte": {
+          "id": "ecocrop",
+          "folha": "https://ecocrop.apps.fao.org/ecocrop/srv/en/dataSheet?id=2175"
+        }
+      },
+      "cicloDias": {
+        "min": 65,
+        "max": 365,
+        "fonte": {
+          "id": "ecocrop",
+          "folha": "https://ecocrop.apps.fao.org/ecocrop/srv/en/dataSheet?id=2175"
+        },
+        "nota": "Faixa de ciclo da base EcoCrop, que cobre variedades muito diferentes. Confirmar com a variedade da zona."
+      },
+      "temperaturaC": {
+        "otima": [
+          18,
+          33
+        ],
+        "absoluta": [
+          10,
+          47
+        ],
+        "fonte": {
+          "id": "ecocrop",
+          "folha": "https://ecocrop.apps.fao.org/ecocrop/srv/en/dataSheet?id=2175"
+        }
+      },
+      "chuvaAnualMm": {
+        "otima": [
+          600,
+          1200
+        ],
+        "absoluta": [
+          400,
+          1800
+        ],
+        "fonte": {
+          "id": "ecocrop",
+          "folha": "https://ecocrop.apps.fao.org/ecocrop/srv/en/dataSheet?id=2175"
+        },
+        "nota": "Chuva anual, não água necessária no ciclo."
+      },
+      "aguaNoCicloMm": {
+        "valor": null,
+        "fonte": "TODO_FONTE",
+        "nota": "TODO_FACTO: falta necessidade hídrica por ciclo com fonte aplicável a Angola. Validar com a equipa agrícola."
+      },
+      "fixaAzoto": {
+        "valor": false,
+        "fonte": {
+          "id": "ecocrop",
+          "folha": "https://ecocrop.apps.fao.org/ecocrop/srv/en/dataSheet?id=2175"
+        },
+        "nota": "Determinado pela família botânica na base EcoCrop (leguminosas nodulam)."
+      },
+      "profundidadeRaizCm": {
+        "valor": null,
+        "fonte": "TODO_FONTE",
+        "nota": "TODO_FACTO: a EcoCrop indica profundidade de solo exigida, não profundidade de raiz. Requer fonte própria."
+      },
+      "coberturaSolo": {
+        "valor": null,
+        "fonte": "TODO_FONTE",
+        "nota": "TODO_FACTO: falta descrição de cobertura do solo e risco de erosão por cultura."
+      },
+      "uso": {
+        "valor": null,
+        "fonte": "TODO_FONTE",
+        "nota": "TODO_FACTO: a EcoCrop não traz categorias de uso para esta espécie."
+      },
+      "confianca": "baixa",
+      "camposEmFalta": [
+        "aguaNoCicloMm",
+        "profundidadeRaizCm",
+        "coberturaSolo",
+        "uso"
+      ],
+      "nomeEN": "Maize"
+    },
+    {
+      "id": "feijao",
+      "nome": "Feijão",
+      "alias": [
+        "feijão",
+        "feijao"
+      ],
+      "nomeCientifico": "Phaseolus vulgaris",
+      "familia": {
+        "valor": "Leguminosae (Fabaceae)",
+        "fonte": {
+          "id": "ecocrop",
+          "folha": "https://ecocrop.apps.fao.org/ecocrop/srv/en/dataSheet?id=1668"
+        }
+      },
+      "cicloDias": {
+        "min": 50,
+        "max": 270,
+        "fonte": {
+          "id": "ecocrop",
+          "folha": "https://ecocrop.apps.fao.org/ecocrop/srv/en/dataSheet?id=1668"
+        },
+        "nota": "Faixa de ciclo da base EcoCrop, que cobre variedades muito diferentes. Confirmar com a variedade da zona."
+      },
+      "temperaturaC": {
+        "otima": [
+          16,
+          25
+        ],
+        "absoluta": [
+          7,
+          32
+        ],
+        "fonte": {
+          "id": "ecocrop",
+          "folha": "https://ecocrop.apps.fao.org/ecocrop/srv/en/dataSheet?id=1668"
+        }
+      },
+      "chuvaAnualMm": {
+        "otima": [
+          500,
+          2000
+        ],
+        "absoluta": [
+          300,
+          4300
+        ],
+        "fonte": {
+          "id": "ecocrop",
+          "folha": "https://ecocrop.apps.fao.org/ecocrop/srv/en/dataSheet?id=1668"
+        },
+        "nota": "Chuva anual, não água necessária no ciclo."
+      },
+      "aguaNoCicloMm": {
+        "valor": null,
+        "fonte": "TODO_FONTE",
+        "nota": "TODO_FACTO: falta necessidade hídrica por ciclo com fonte aplicável a Angola. Validar com a equipa agrícola."
+      },
+      "fixaAzoto": {
+        "valor": true,
+        "fonte": {
+          "id": "ecocrop",
+          "folha": "https://ecocrop.apps.fao.org/ecocrop/srv/en/dataSheet?id=1668"
+        },
+        "nota": "Determinado pela família botânica na base EcoCrop (leguminosas nodulam)."
+      },
+      "profundidadeRaizCm": {
+        "valor": null,
+        "fonte": "TODO_FONTE",
+        "nota": "TODO_FACTO: a EcoCrop indica profundidade de solo exigida, não profundidade de raiz. Requer fonte própria."
+      },
+      "coberturaSolo": {
+        "valor": null,
+        "fonte": "TODO_FONTE",
+        "nota": "TODO_FACTO: falta descrição de cobertura do solo e risco de erosão por cultura."
+      },
+      "uso": {
+        "valor": [
+          "leguminosas de grão",
+          "forragem",
+          "hortícola",
+          "medicinal"
+        ],
+        "fonte": {
+          "id": "ecocrop",
+          "folha": "https://ecocrop.apps.fao.org/ecocrop/srv/en/dataSheet?id=1668"
+        }
+      },
+      "confianca": "media",
+      "camposEmFalta": [
+        "aguaNoCicloMm",
+        "profundidadeRaizCm",
+        "coberturaSolo"
+      ],
+      "nomeEN": "Beans"
+    },
+    {
+      "id": "mandioca",
+      "nome": "Mandioca",
+      "alias": [
+        "mandioca",
+        "cassava"
+      ],
+      "nomeCientifico": "Manihot esculenta",
+      "familia": {
+        "valor": "Euphorbiaceae",
+        "fonte": {
+          "id": "ecocrop",
+          "folha": "https://ecocrop.apps.fao.org/ecocrop/srv/en/dataSheet?id=1420"
+        }
+      },
+      "cicloDias": {
+        "min": 180,
+        "max": 365,
+        "fonte": {
+          "id": "ecocrop",
+          "folha": "https://ecocrop.apps.fao.org/ecocrop/srv/en/dataSheet?id=1420"
+        },
+        "nota": "Faixa de ciclo da base EcoCrop, que cobre variedades muito diferentes. Confirmar com a variedade da zona."
+      },
+      "temperaturaC": {
+        "otima": [
+          20,
+          29
+        ],
+        "absoluta": [
+          10,
+          35
+        ],
+        "fonte": {
+          "id": "ecocrop",
+          "folha": "https://ecocrop.apps.fao.org/ecocrop/srv/en/dataSheet?id=1420"
+        }
+      },
+      "chuvaAnualMm": {
+        "otima": [
+          1000,
+          1500
+        ],
+        "absoluta": [
+          500,
+          5000
+        ],
+        "fonte": {
+          "id": "ecocrop",
+          "folha": "https://ecocrop.apps.fao.org/ecocrop/srv/en/dataSheet?id=1420"
+        },
+        "nota": "Chuva anual, não água necessária no ciclo."
+      },
+      "aguaNoCicloMm": {
+        "valor": null,
+        "fonte": "TODO_FONTE",
+        "nota": "TODO_FACTO: falta necessidade hídrica por ciclo com fonte aplicável a Angola. Validar com a equipa agrícola."
+      },
+      "fixaAzoto": {
+        "valor": false,
+        "fonte": {
+          "id": "ecocrop",
+          "folha": "https://ecocrop.apps.fao.org/ecocrop/srv/en/dataSheet?id=1420"
+        },
+        "nota": "Determinado pela família botânica na base EcoCrop (leguminosas nodulam)."
+      },
+      "profundidadeRaizCm": {
+        "valor": null,
+        "fonte": "TODO_FONTE",
+        "nota": "TODO_FACTO: a EcoCrop indica profundidade de solo exigida, não profundidade de raiz. Requer fonte própria."
+      },
+      "coberturaSolo": {
+        "valor": null,
+        "fonte": "TODO_FONTE",
+        "nota": "TODO_FACTO: falta descrição de cobertura do solo e risco de erosão por cultura."
+      },
+      "uso": {
+        "valor": [
+          "raízes e tubérculos"
+        ],
+        "fonte": {
+          "id": "ecocrop",
+          "folha": "https://ecocrop.apps.fao.org/ecocrop/srv/en/dataSheet?id=1420"
+        }
+      },
+      "confianca": "media",
+      "camposEmFalta": [
+        "aguaNoCicloMm",
+        "profundidadeRaizCm",
+        "coberturaSolo"
+      ],
+      "nomeEN": "Cassava"
+    },
+    {
+      "id": "amendoim",
+      "nome": "Amendoim",
+      "alias": [
+        "amendoim"
+      ],
+      "nomeCientifico": "Arachis hypogaea",
+      "familia": {
+        "valor": "Leguminosae (Fabaceae)",
+        "fonte": {
+          "id": "ecocrop",
+          "folha": "https://ecocrop.apps.fao.org/ecocrop/srv/en/dataSheet?id=2199"
+        }
+      },
+      "cicloDias": {
+        "min": 90,
+        "max": 150,
+        "fonte": {
+          "id": "ecocrop",
+          "folha": "https://ecocrop.apps.fao.org/ecocrop/srv/en/dataSheet?id=2199"
+        },
+        "nota": "Faixa de ciclo da base EcoCrop, que cobre variedades muito diferentes. Confirmar com a variedade da zona."
+      },
+      "temperaturaC": {
+        "otima": [
+          22,
+          32
+        ],
+        "absoluta": [
+          10,
+          45
+        ],
+        "fonte": {
+          "id": "ecocrop",
+          "folha": "https://ecocrop.apps.fao.org/ecocrop/srv/en/dataSheet?id=2199"
+        }
+      },
+      "chuvaAnualMm": {
+        "otima": [
+          600,
+          1500
+        ],
+        "absoluta": [
+          400,
+          4000
+        ],
+        "fonte": {
+          "id": "ecocrop",
+          "folha": "https://ecocrop.apps.fao.org/ecocrop/srv/en/dataSheet?id=2199"
+        },
+        "nota": "Chuva anual, não água necessária no ciclo."
+      },
+      "aguaNoCicloMm": {
+        "valor": null,
+        "fonte": "TODO_FONTE",
+        "nota": "TODO_FACTO: falta necessidade hídrica por ciclo com fonte aplicável a Angola. Validar com a equipa agrícola."
+      },
+      "fixaAzoto": {
+        "valor": true,
+        "fonte": {
+          "id": "ecocrop",
+          "folha": "https://ecocrop.apps.fao.org/ecocrop/srv/en/dataSheet?id=2199"
+        },
+        "nota": "Determinado pela família botânica na base EcoCrop (leguminosas nodulam)."
+      },
+      "profundidadeRaizCm": {
+        "valor": null,
+        "fonte": "TODO_FONTE",
+        "nota": "TODO_FACTO: a EcoCrop indica profundidade de solo exigida, não profundidade de raiz. Requer fonte própria."
+      },
+      "coberturaSolo": {
+        "valor": null,
+        "fonte": "TODO_FONTE",
+        "nota": "TODO_FACTO: falta descrição de cobertura do solo e risco de erosão por cultura."
+      },
+      "uso": {
+        "valor": [
+          "leguminosas de grão",
+          "hortícola",
+          "materiais",
+          "medicinal"
+        ],
+        "fonte": {
+          "id": "ecocrop",
+          "folha": "https://ecocrop.apps.fao.org/ecocrop/srv/en/dataSheet?id=2199"
+        }
+      },
+      "confianca": "media",
+      "camposEmFalta": [
+        "aguaNoCicloMm",
+        "profundidadeRaizCm",
+        "coberturaSolo"
+      ],
+      "nomeEN": "Groundnut"
+    },
+    {
+      "id": "soja",
+      "nome": "Soja",
+      "alias": [
+        "soja"
+      ],
+      "nomeCientifico": "Glycine max",
+      "familia": {
+        "valor": "Leguminosae (Fabaceae)",
+        "fonte": {
+          "id": "ecocrop",
+          "folha": "https://ecocrop.apps.fao.org/ecocrop/srv/en/dataSheet?id=1150"
+        }
+      },
+      "cicloDias": {
+        "min": 75,
+        "max": 180,
+        "fonte": {
+          "id": "ecocrop",
+          "folha": "https://ecocrop.apps.fao.org/ecocrop/srv/en/dataSheet?id=1150"
+        },
+        "nota": "Faixa de ciclo da base EcoCrop, que cobre variedades muito diferentes. Confirmar com a variedade da zona."
+      },
+      "temperaturaC": {
+        "otima": [
+          20,
+          33
+        ],
+        "absoluta": [
+          10,
+          38
+        ],
+        "fonte": {
+          "id": "ecocrop",
+          "folha": "https://ecocrop.apps.fao.org/ecocrop/srv/en/dataSheet?id=1150"
+        }
+      },
+      "chuvaAnualMm": {
+        "otima": [
+          600,
+          1500
+        ],
+        "absoluta": [
+          450,
+          1800
+        ],
+        "fonte": {
+          "id": "ecocrop",
+          "folha": "https://ecocrop.apps.fao.org/ecocrop/srv/en/dataSheet?id=1150"
+        },
+        "nota": "Chuva anual, não água necessária no ciclo."
+      },
+      "aguaNoCicloMm": {
+        "valor": null,
+        "fonte": "TODO_FONTE",
+        "nota": "TODO_FACTO: falta necessidade hídrica por ciclo com fonte aplicável a Angola. Validar com a equipa agrícola."
+      },
+      "fixaAzoto": {
+        "valor": true,
+        "fonte": {
+          "id": "ecocrop",
+          "folha": "https://ecocrop.apps.fao.org/ecocrop/srv/en/dataSheet?id=1150"
+        },
+        "nota": "Determinado pela família botânica na base EcoCrop (leguminosas nodulam)."
+      },
+      "profundidadeRaizCm": {
+        "valor": null,
+        "fonte": "TODO_FONTE",
+        "nota": "TODO_FACTO: a EcoCrop indica profundidade de solo exigida, não profundidade de raiz. Requer fonte própria."
+      },
+      "coberturaSolo": {
+        "valor": null,
+        "fonte": "TODO_FONTE",
+        "nota": "TODO_FACTO: falta descrição de cobertura do solo e risco de erosão por cultura."
+      },
+      "uso": {
+        "valor": [
+          "leguminosas de grão"
+        ],
+        "fonte": {
+          "id": "ecocrop",
+          "folha": "https://ecocrop.apps.fao.org/ecocrop/srv/en/dataSheet?id=1150"
+        }
+      },
+      "confianca": "media",
+      "camposEmFalta": [
+        "aguaNoCicloMm",
+        "profundidadeRaizCm",
+        "coberturaSolo"
+      ],
+      "nomeEN": "Soya"
+    },
+    {
+      "id": "batata-doce",
+      "nome": "Batata-doce",
+      "alias": [
+        "batata-doce"
+      ],
+      "nomeCientifico": "Ipomoea batatas",
+      "familia": {
+        "valor": "Convolvulaceae",
+        "fonte": {
+          "id": "ecocrop",
+          "folha": "https://ecocrop.apps.fao.org/ecocrop/srv/en/dataSheet?id=1265"
+        }
+      },
+      "cicloDias": {
+        "min": 80,
+        "max": 170,
+        "fonte": {
+          "id": "ecocrop",
+          "folha": "https://ecocrop.apps.fao.org/ecocrop/srv/en/dataSheet?id=1265"
+        },
+        "nota": "Faixa de ciclo da base EcoCrop, que cobre variedades muito diferentes. Confirmar com a variedade da zona."
+      },
+      "temperaturaC": {
+        "otima": [
+          18,
+          28
+        ],
+        "absoluta": [
+          10,
+          38
+        ],
+        "fonte": {
+          "id": "ecocrop",
+          "folha": "https://ecocrop.apps.fao.org/ecocrop/srv/en/dataSheet?id=1265"
+        }
+      },
+      "chuvaAnualMm": {
+        "otima": [
+          750,
+          2000
+        ],
+        "absoluta": [
+          350,
+          5000
+        ],
+        "fonte": {
+          "id": "ecocrop",
+          "folha": "https://ecocrop.apps.fao.org/ecocrop/srv/en/dataSheet?id=1265"
+        },
+        "nota": "Chuva anual, não água necessária no ciclo."
+      },
+      "aguaNoCicloMm": {
+        "valor": null,
+        "fonte": "TODO_FONTE",
+        "nota": "TODO_FACTO: falta necessidade hídrica por ciclo com fonte aplicável a Angola. Validar com a equipa agrícola."
+      },
+      "fixaAzoto": {
+        "valor": false,
+        "fonte": {
+          "id": "ecocrop",
+          "folha": "https://ecocrop.apps.fao.org/ecocrop/srv/en/dataSheet?id=1265"
+        },
+        "nota": "Determinado pela família botânica na base EcoCrop (leguminosas nodulam)."
+      },
+      "profundidadeRaizCm": {
+        "valor": null,
+        "fonte": "TODO_FONTE",
+        "nota": "TODO_FACTO: a EcoCrop indica profundidade de solo exigida, não profundidade de raiz. Requer fonte própria."
+      },
+      "coberturaSolo": {
+        "valor": null,
+        "fonte": "TODO_FONTE",
+        "nota": "TODO_FACTO: falta descrição de cobertura do solo e risco de erosão por cultura."
+      },
+      "uso": {
+        "valor": null,
+        "fonte": "TODO_FONTE",
+        "nota": "TODO_FACTO: a EcoCrop não traz categorias de uso para esta espécie."
+      },
+      "confianca": "baixa",
+      "camposEmFalta": [
+        "aguaNoCicloMm",
+        "profundidadeRaizCm",
+        "coberturaSolo",
+        "uso"
+      ],
+      "nomeEN": "Sweet potato"
+    },
+    {
+      "id": "massango",
+      "nome": "Massango / sorgo",
+      "alias": [
+        "massango",
+        "sorgo",
+        "sorghum"
+      ],
+      "nomeCientifico": "Sorghum bicolor",
+      "familia": {
+        "valor": "Gramineae (Poaceae)",
+        "fonte": {
+          "id": "ecocrop",
+          "folha": "https://ecocrop.apps.fao.org/ecocrop/srv/en/dataSheet?id=48747"
+        }
+      },
+      "cicloDias": {
+        "min": 90,
+        "max": 300,
+        "fonte": {
+          "id": "ecocrop",
+          "folha": "https://ecocrop.apps.fao.org/ecocrop/srv/en/dataSheet?id=48747"
+        },
+        "nota": "Faixa de ciclo da base EcoCrop, que cobre variedades muito diferentes. Confirmar com a variedade da zona."
+      },
+      "temperaturaC": {
+        "otima": [
+          22,
+          35
+        ],
+        "absoluta": [
+          8,
+          40
+        ],
+        "fonte": {
+          "id": "ecocrop",
+          "folha": "https://ecocrop.apps.fao.org/ecocrop/srv/en/dataSheet?id=48747"
+        }
+      },
+      "chuvaAnualMm": {
+        "otima": [
+          400,
+          600
+        ],
+        "absoluta": [
+          300,
+          700
+        ],
+        "fonte": {
+          "id": "ecocrop",
+          "folha": "https://ecocrop.apps.fao.org/ecocrop/srv/en/dataSheet?id=48747"
+        },
+        "nota": "Chuva anual, não água necessária no ciclo."
+      },
+      "aguaNoCicloMm": {
+        "valor": null,
+        "fonte": "TODO_FONTE",
+        "nota": "TODO_FACTO: falta necessidade hídrica por ciclo com fonte aplicável a Angola. Validar com a equipa agrícola."
+      },
+      "fixaAzoto": {
+        "valor": false,
+        "fonte": {
+          "id": "ecocrop",
+          "folha": "https://ecocrop.apps.fao.org/ecocrop/srv/en/dataSheet?id=48747"
+        },
+        "nota": "Determinado pela família botânica na base EcoCrop (leguminosas nodulam)."
+      },
+      "profundidadeRaizCm": {
+        "valor": null,
+        "fonte": "TODO_FONTE",
+        "nota": "TODO_FACTO: a EcoCrop indica profundidade de solo exigida, não profundidade de raiz. Requer fonte própria."
+      },
+      "coberturaSolo": {
+        "valor": null,
+        "fonte": "TODO_FONTE",
+        "nota": "TODO_FACTO: falta descrição de cobertura do solo e risco de erosão por cultura."
+      },
+      "uso": {
+        "valor": [
+          "cereais",
+          "forragem",
+          "medicinal"
+        ],
+        "fonte": {
+          "id": "ecocrop",
+          "folha": "https://ecocrop.apps.fao.org/ecocrop/srv/en/dataSheet?id=48747"
+        }
+      },
+      "confianca": "media",
+      "camposEmFalta": [
+        "aguaNoCicloMm",
+        "profundidadeRaizCm",
+        "coberturaSolo"
+      ],
+      "nomeEN": "Millet / sorghum"
+    },
+    {
+      "id": "abobora",
+      "nome": "Abóbora",
+      "alias": [
+        "abóbora",
+        "abobora",
+        "pumpkin"
+      ],
+      "nomeCientifico": "Cucurbita maxima",
+      "familia": {
+        "valor": "Cucurbitaceae",
+        "fonte": {
+          "id": "ecocrop",
+          "folha": "https://ecocrop.apps.fao.org/ecocrop/srv/en/dataSheet?id=819"
+        }
+      },
+      "cicloDias": {
+        "min": 80,
+        "max": 140,
+        "fonte": {
+          "id": "ecocrop",
+          "folha": "https://ecocrop.apps.fao.org/ecocrop/srv/en/dataSheet?id=819"
+        },
+        "nota": "Faixa de ciclo da base EcoCrop, que cobre variedades muito diferentes. Confirmar com a variedade da zona."
+      },
+      "temperaturaC": {
+        "otima": [
+          20,
+          30
+        ],
+        "absoluta": [
+          9,
+          38
+        ],
+        "fonte": {
+          "id": "ecocrop",
+          "folha": "https://ecocrop.apps.fao.org/ecocrop/srv/en/dataSheet?id=819"
+        }
+      },
+      "chuvaAnualMm": {
+        "otima": [
+          600,
+          1000
+        ],
+        "absoluta": [
+          450,
+          2700
+        ],
+        "fonte": {
+          "id": "ecocrop",
+          "folha": "https://ecocrop.apps.fao.org/ecocrop/srv/en/dataSheet?id=819"
+        },
+        "nota": "Chuva anual, não água necessária no ciclo."
+      },
+      "aguaNoCicloMm": {
+        "valor": null,
+        "fonte": "TODO_FONTE",
+        "nota": "TODO_FACTO: falta necessidade hídrica por ciclo com fonte aplicável a Angola. Validar com a equipa agrícola."
+      },
+      "fixaAzoto": {
+        "valor": false,
+        "fonte": {
+          "id": "ecocrop",
+          "folha": "https://ecocrop.apps.fao.org/ecocrop/srv/en/dataSheet?id=819"
+        },
+        "nota": "Determinado pela família botânica na base EcoCrop (leguminosas nodulam)."
+      },
+      "profundidadeRaizCm": {
+        "valor": null,
+        "fonte": "TODO_FONTE",
+        "nota": "TODO_FACTO: a EcoCrop indica profundidade de solo exigida, não profundidade de raiz. Requer fonte própria."
+      },
+      "coberturaSolo": {
+        "valor": null,
+        "fonte": "TODO_FONTE",
+        "nota": "TODO_FACTO: falta descrição de cobertura do solo e risco de erosão por cultura."
+      },
+      "uso": {
+        "valor": [
+          "forragem",
+          "fruta",
+          "hortícola",
+          "materiais",
+          "medicinal"
+        ],
+        "fonte": {
+          "id": "ecocrop",
+          "folha": "https://ecocrop.apps.fao.org/ecocrop/srv/en/dataSheet?id=819"
+        }
+      },
+      "confianca": "media",
+      "camposEmFalta": [
+        "aguaNoCicloMm",
+        "profundidadeRaizCm",
+        "coberturaSolo"
+      ],
+      "nomeEN": "Pumpkin"
+    }
+  ]
+}

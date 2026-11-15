@@ -1,0 +1,312 @@
+/* ==========================================================================
+   Terra Viva — base: tipografia auto-alojada, reset, fundo de papel
+   ========================================================================== */
+
+/* Fraunces (títulos) e Karla (texto) — SIL Open Font License 1.1.
+   Auto-alojadas para o PWA funcionar offline. Ver fontes.html. */
+@font-face {
+  font-family: "Fraunces";
+  font-style: normal;
+  font-weight: 300 900;
+  font-display: swap;
+  src: url("../fontes/fraunces-latin.woff2") format("woff2");
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA,
+    U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193,
+    U+2212, U+2215, U+FEFF, U+FFFD;
+}
+@font-face {
+  font-family: "Fraunces";
+  font-style: normal;
+  font-weight: 300 900;
+  font-display: swap;
+  src: url("../fontes/fraunces-latin-ext.woff2") format("woff2");
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF,
+    U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020,
+    U+20A0-20AB, U+20AD-20C4, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+@font-face {
+  font-family: "Karla";
+  font-style: normal;
+  font-weight: 300 700;
+  font-display: swap;
+  src: url("../fontes/karla-latin.woff2") format("woff2");
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA,
+    U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193,
+    U+2212, U+2215, U+FEFF, U+FFFD;
+}
+@font-face {
+  font-family: "Karla";
+  font-style: normal;
+  font-weight: 300 700;
+  font-display: swap;
+  src: url("../fontes/karla-latin-ext.woff2") format("woff2");
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF,
+    U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020,
+    U+20A0-20AB, U+20AD-20C4, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+* {
+  margin: 0;
+}
+
+:root {
+  --goteira: clamp(1.125rem, 4vw, 3rem);
+  --traco-mapa: 3;
+}
+
+html {
+  -webkit-text-size-adjust: 100%;
+  scroll-behavior: smooth;
+  scroll-padding-top: 5rem;
+}
+
+body {
+  min-height: 100svh;
+  background-color: var(--creme);
+  color: var(--tinta);
+  font-family: var(--fonte-texto);
+  font-size: var(--t-corpo);
+  line-height: var(--alt-linha);
+  font-weight: 400;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+  overflow-x: hidden;
+  transition: background-color var(--d-media) var(--curva),
+    color var(--d-media) var(--curva);
+}
+
+body::before {
+  /* curva de nível de fundo: relevo angolano, muito discreto */
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  opacity: 0.5;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='1400' height='900' viewBox='0 0 1400 900'%3E%3Cg fill='none' stroke='%23221a14' stroke-opacity='0.055' stroke-width='1.1'%3E%3Cpath d='M-60 180C140 120 260 260 470 232s330-170 540-120 320 210 470 170'/%3E%3Cpath d='M-60 240C150 182 280 318 480 292s340-166 540-118 320 204 470 166'/%3E%3Cpath d='M-60 300C160 244 300 376 490 352s350-162 540-116 320 198 470 162'/%3E%3Cpath d='M-60 620C120 690 300 560 520 596s360 190 560 140 260-170 420-140'/%3E%3Cpath d='M-60 680C140 748 320 622 530 656s360 186 560 136 260-166 420-136'/%3E%3Cpath d='M-60 742C160 806 340 686 540 718s360 182 560 132 260-160 420-132'/%3E%3C/g%3E%3C/svg%3E");
+  background-size: cover;
+  background-position: center;
+}
+
+/* Grão de papel — camada fixa, nunca apanha cliques. */
+.grao {
+  position: fixed;
+  inset: 0;
+  z-index: var(--z-grao);
+  pointer-events: none;
+  opacity: 0.055;
+  mix-blend-mode: multiply;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='g'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.86' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='160' height='160' filter='url(%23g)'/%3E%3C/svg%3E");
+}
+[data-tema="campo"] .grao {
+  opacity: 0.07;
+  mix-blend-mode: screen;
+}
+
+h1,
+h2,
+h3,
+h4 {
+  font-family: var(--fonte-titulo);
+  font-weight: 600;
+  line-height: var(--alt-titulo);
+  letter-spacing: -0.015em;
+  font-variation-settings: "SOFT" 24, "WONK" 1;
+  text-wrap: balance;
+}
+
+h2 {
+  font-size: var(--t-h2);
+}
+h3 {
+  font-size: var(--t-h3);
+  line-height: 1.2;
+}
+
+p,
+li {
+  text-wrap: pretty;
+}
+
+a {
+  color: var(--terra);
+  text-decoration-thickness: 1px;
+  text-underline-offset: 0.22em;
+}
+a:hover {
+  color: var(--terra-forte);
+}
+
+img,
+svg,
+canvas {
+  display: block;
+  max-width: 100%;
+}
+svg {
+  height: auto;
+}
+
+button,
+input,
+select,
+textarea {
+  font: inherit;
+  color: inherit;
+}
+
+button {
+  cursor: pointer;
+  background: none;
+  border: 0;
+  text-align: left;
+}
+
+ul[role="list"],
+ol[role="list"] {
+  list-style: none;
+  padding: 0;
+}
+
+:where(a, button, [tabindex]):focus-visible {
+  outline: 3px solid var(--dourado);
+  outline-offset: 3px;
+  border-radius: var(--raio-1);
+}
+
+[data-tema="campo"] :where(a, button, [tabindex]):focus-visible,
+.hero :where(a, button, [tabindex]):focus-visible {
+  outline-color: var(--dourado-claro);
+}
+
+::selection {
+  background: var(--terra);
+  color: #fbf7ee;
+}
+
+/* --- Estrutura --- */
+.conteudo {
+  position: relative;
+  z-index: 1;
+  max-width: var(--largura-max);
+  margin-inline: auto;
+  padding-inline: var(--goteira);
+}
+
+.secao {
+  position: relative;
+  z-index: 1;
+  padding-block: var(--e-secao);
+}
+
+.secao--papel {
+  background: var(--creme-fundo);
+  border-block: 1px solid var(--traco-fraco);
+}
+
+.secao__cabeca {
+  max-width: var(--largura-texto);
+  margin-bottom: clamp(1.75rem, 4vw, 3rem);
+}
+
+.eyebrow {
+  display: flex;
+  align-items: center;
+  gap: 0.7rem;
+  font-family: var(--fonte-texto);
+  font-size: var(--t-micro);
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--terra);
+  margin-bottom: 0.9rem;
+}
+.eyebrow::before {
+  content: "";
+  width: 2rem;
+  height: 2px;
+  background: currentColor;
+  flex: none;
+}
+.hero .eyebrow {
+  color: var(--dourado-claro);
+}
+.secao--papel .eyebrow {
+  color: var(--terra-forte);
+}
+
+.sub {
+  font-size: var(--t-corpo);
+  color: var(--tinta-suave);
+  max-width: 58ch;
+  margin-top: 0.85rem;
+}
+
+.micro {
+  font-size: var(--t-micro);
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--tinta-fraca);
+}
+
+.saltar {
+  position: absolute;
+  left: -9999px;
+  top: 0;
+  z-index: 100;
+  background: var(--creme-alto);
+  color: var(--tinta);
+  padding: 0.9rem 1.2rem;
+  border: 1px solid var(--traco-forte);
+}
+.saltar:focus {
+  left: 1rem;
+  top: 1rem;
+}
+
+.visualmente-oculto {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* --- Revelação ao scroll (só quando há JS) --- */
+.js .revelar {
+  opacity: 0;
+  transform: translateY(22px);
+  transition: opacity 700ms var(--curva-saida), transform 700ms var(--curva-saida);
+}
+.js .revelar.visivel {
+  opacity: 1;
+  transform: none;
+}
+
+/* --- Movimento reduzido: tudo parado, nada escondido --- */
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+  }
+  .js .revelar {
+    opacity: 1;
+    transform: none;
+  }
+}

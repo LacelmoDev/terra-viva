@@ -1,0 +1,86 @@
+{
+  "versao": "1",
+  "atualizadoEm": "2026-11-14",
+  "nota": "Pontos de referência das oito zonas agrícolas pré-carregadas. As coordenadas são o centro da localidade urbana, não o centro geométrico da província. Nenhum valor aqui é estimado: todos vêm da consulta citada em fonte.",
+  "fonte": {
+    "nome": "OpenStreetMap / Nominatim",
+    "url": "https://www.openstreetmap.org/copyright",
+    "licenca": "ODbL 1.0",
+    "consulta": "2026-11-14",
+    "metodo": "Pesquisa pública Nominatim por nome do município, format=jsonv2, primeiro resultado do tipo povoado ou town."
+  },
+  "locais": [
+    {
+      "id": "huambo",
+      "nome": "Huambo",
+      "provincia": "Huambo",
+      "lat": -12.7772455,
+      "lon": 15.7346713,
+      "tipo": "cidade",
+      "fonteId": "osm-nominatim"
+    },
+    {
+      "id": "kuito",
+      "nome": "Kuito",
+      "provincia": "Bié",
+      "lat": -12.3849374,
+      "lon": 16.9390022,
+      "tipo": "cidade",
+      "fonteId": "osm-nominatim"
+    },
+    {
+      "id": "malanje",
+      "nome": "Malanje",
+      "provincia": "Malanje",
+      "lat": -9.535332,
+      "lon": 16.9364293,
+      "tipo": "cidade",
+      "fonteId": "osm-nominatim"
+    },
+    {
+      "id": "uige",
+      "nome": "Uíge",
+      "provincia": "Uíge",
+      "lat": -6.9516802,
+      "lon": 15.4799164,
+      "tipo": "cidade",
+      "fonteId": "osm-nominatim"
+    },
+    {
+      "id": "waku-kungo",
+      "nome": "Waku Kungo",
+      "provincia": "Cuanza Sul",
+      "lat": -11.4228208,
+      "lon": 15.125556,
+      "tipo": "vila (Cela)",
+      "fonteId": "osm-nominatim"
+    },
+    {
+      "id": "lubango",
+      "nome": "Lubango",
+      "provincia": "Huíla",
+      "lat": -14.9195617,
+      "lon": 13.4897509,
+      "tipo": "cidade",
+      "fonteId": "osm-nominatim"
+    },
+    {
+      "id": "ondjiva",
+      "nome": "Ondjiva",
+      "provincia": "Cunene",
+      "lat": -17.0705234,
+      "lon": 15.7280115,
+      "tipo": "cidade",
+      "fonteId": "osm-nominatim"
+    },
+    {
+      "id": "benguela",
+      "nome": "Benguela",
+      "provincia": "Benguela",
+      "lat": -12.5790048,
+      "lon": 13.4037117,
+      "tipo": "cidade",
+      "fonteId": "osm-nominatim"
+    }
+  ]
+}

@@ -1,0 +1,342 @@
+{
+  "meta": {
+    "lingua": "pt-AO",
+    "versao": "1.0.0-marco1",
+    "titulo": "Terra Viva — o calendário vivo da tua terra",
+    "descricao": "Ferramenta de apoio à decisão para agricultores de Angola: dados da NASA para a tua zona, indicadores com regras visíveis e comparação de três rotações de culturas."
+  },
+  "marca": {
+    "nome": "Terra Viva",
+    "lema": "Calendário vivo"
+  },
+  "a11y": {
+    "saltar": "Saltar para o conteúdo",
+    "tema": "Alternar modo campo (escuro)",
+    "menu": "Menu",
+    "mapa": "Mapa de Angola com as oito zonas agrícolas pré-carregadas",
+    "pin": "Escolher a zona de",
+    "passoAnterior": "Passo anterior",
+    "passoSeguinte": "Passo seguinte",
+    "idioma": "Idioma"
+  },
+  "nav": {
+    "inicio": "Início",
+    "comecar": "Começar",
+    "sobre": "Sobre",
+    "fontes": "Fontes",
+    "principal": "Principal"
+  },
+  "hero": {
+    "etiqueta": "NASA Space Apps Challenge 2026 · Evento local de Calumbo, Zango",
+    "titulo": "O calendário",
+    "titulo2": "vivo",
+    "titulo3": "da tua terra.",
+    "sub": "Escolhe a tua zona, diz o que plantaste e o que te importa. A Terra Viva lê os dados da NASA para o teu ponto do mapa, mostra o ano da terra mês a mês e compara três rotações de culturas — com a evidência, as lacunas e os riscos à vista.",
+    "cta1": "Começar pelo mapa",
+    "cta2": "Como funciona",
+    "factos": {
+      "zonas": "8 zonas agrícolas de Angola",
+      "dados": "Dados NASA POWER, séries longas",
+      "offline": "Funciona sem internet"
+    },
+    "motivoLegenda": "O Relógio da Terra — um ano da tua zona, mês a mês"
+  },
+  "confianca": {
+    "titulo": "Nenhum número sem origem",
+    "sub": "Cada valor no ecrã leva uma de três etiquetas. Nunca aparecem misturadas.",
+    "nasa": {
+      "nome": "Dado NASA",
+      "texto": "Chuva, temperatura, humidade do solo e radiação para o teu ponto, tal como o satélite e a reanálise os registam."
+    },
+    "calculado": {
+      "nome": "Calculado por nós",
+      "texto": "Indicadores derivados dos dados, com a regra escrita ao lado. Podes discordar da regra e ver o que muda."
+    },
+    "conhecimento": {
+      "nome": "Conhecimento agronómico",
+      "texto": "Ciclos, necessidades de água e práticas das culturas, sempre com a fonte citada."
+    }
+  },
+  "fluxo": {
+    "etiqueta": "Quatro passos",
+    "titulo": "Da tua machamba à comparação",
+    "sub": "Tudo num telemóvel, com toques grandes e texto legível. Podes voltar atrás em qualquer passo.",
+    "passos": {
+      "1": "Onde estás",
+      "2": "O que plantaste",
+      "3": "O que te importa",
+      "4": "A tua comparação"
+    }
+  },
+  "passo1": {
+    "etiqueta": "Passo 01",
+    "titulo": "Onde estás?",
+    "sub": "Toca no mapa de Angola ou escolhe a zona na lista.",
+    "listaTitulo": "Zonas pré-carregadas",
+    "escolhida": "Zona escolhida",
+    "nenhuma": "Ainda não escolheste nenhuma zona.",
+    "fonteMapa": "Contorno: Natural Earth (domínio público). Coordenadas: OpenStreetMap / Nominatim (ODbL).",
+    "solo": {
+      "titulo": "Como é o teu solo?",
+      "sub": "Escolhe a textura que conheces da tua terra. É opcional e podes mudar depois.",
+      "arenoso": "Arenoso",
+      "franco": "Franco",
+      "argiloso": "Argiloso",
+      "naoSei": "Não sei",
+      "nota": "Esta informação vem de ti, não de um satélite. O satélite vê chuva, temperatura, humidade, vegetação e relevo — não vê a fertilidade do solo."
+    }
+  },
+  "passo2": {
+    "etiqueta": "Passo 02",
+    "titulo": "O que plantaste?",
+    "sub": "Escolhe a cultura da última época e, se te lembrares, a da época anterior.",
+    "ultima": "Última época",
+    "anterior": "Época anterior (opcional)",
+    "pousio": "Pousio",
+    "ajuda": "Se deixaste a terra em descanso, escolhe «Pousio». Não precisas de saber o nome da variedade.",
+    "escolher": "Escolher"
+  },
+  "passo3": {
+    "etiqueta": "Passo 03",
+    "titulo": "O que te importa?",
+    "sub": "Dá peso ao que decide por ti. Três posições por prioridade, sem números para decorar.",
+    "prioridades": {
+      "agua": "Água",
+      "rendimento": "Rendimento",
+      "solo": "Solo",
+      "risco": "Risco"
+    },
+    "niveis": {
+      "baixa": "Pouco",
+      "normal": "Normal",
+      "alta": "Muito"
+    },
+    "irrigacao": "Tens irrigação?",
+    "sim": "Sim",
+    "nao": "Não",
+    "maoDeObra": "Mão de obra disponível",
+    "pouca": "Pouca",
+    "normal": "Normal",
+    "muita": "Muita",
+    "nota": "A prioridade «rendimento» fica registada mas ainda não altera a pontuação: falta dado de rendimento por cultura. Nada é estimado no lugar dele."
+  },
+  "passo4": {
+    "etiqueta": "Passo 04",
+    "titulo": "A tua comparação",
+    "sub": "Três rotações para a mesma zona e as mesmas prioridades.",
+    "semZona": "Falta escolher a zona no passo 1.",
+    "semCultura": "Falta escolher a cultura da última época no passo 2.",
+    "aCaminho": "O relógio em cima usa os dados da NASA para esta zona. Muda o cenário de chuva e vê as pontuações abaixo mudarem."
+  },
+  "clima": {
+    "titulo": "O ano da terra nesta zona",
+    "origem": "Calculado por nós",
+    "fonte": "NASA POWER · 2001–2024",
+    "semZona": "Escolhe uma zona para ver os números do ano.",
+    "carregando": "A ler os dados da NASA para esta zona…",
+    "erro": "Não foi possível carregar os dados desta zona.",
+    "chuva": "Chuva por ano",
+    "epoca": "Época chuvosa",
+    "seca": "Maior seca seguida",
+    "calor": "Dias de calor",
+    "dias": "dias",
+    "meses": "meses",
+    "verRegras": "Ver regras e limites",
+    "limite": "Estes números vêm de um modelo da NASA para um ponto do mapa, não da tua machamba. As regras e os limites estão na página Sobre.",
+    "qualidade": "Um mês desta série foi marcado como suspeito e ficou fora das médias.",
+    "mediana": "mediana de {anos} anos",
+    "piorAno": "pior ano: {ano}"
+  },
+  "relogio": {
+    "etiqueta": "O Relógio da Terra",
+    "titulo": "Um ano na tua terra",
+    "sub": "Três anéis: chuva, humidade do solo e temperatura, mês a mês. O anel interior é o calendário da cultura escolhida.",
+    "legenda": {
+      "chuva": "Chuva",
+      "solo": "Humidade do solo",
+      "temp": "Temperatura",
+      "cultura": "Cultura no campo",
+      "terraNua": "Terra nua"
+    },
+    "rotacao": "Rotação",
+    "epoca": "Época",
+    "cenario": "Cenário",
+    "cenarios": {
+      "normal": "Época normal",
+      "atraso": "A chuva atrasa 3 semanas",
+      "menos20": "Chove 20% menos",
+      "mais20": "Chove 20% mais"
+    },
+    "rotulos": {
+      "atual": "Atual",
+      "alternativa": "Alt. {n}"
+    },
+    "inicio": "Início da época: {mes}",
+    "ciclo": "Ciclo {min}–{max} dias",
+    "terraNuaMeses": "{n} meses de terra nua",
+    "semCultura": "Sem cultura escolhida",
+    "tabela": "Ver em tabela",
+    "tabelaCabecalho": {
+      "mes": "Mês",
+      "chuva": "Chuva (mm)",
+      "solo": "Solo (0–1)",
+      "temp": "Temp. (°C)",
+      "cultura": "No campo"
+    },
+    "resumo": "Chuva {chuva} mm · época {inicio}–{fim} · {n} meses de terra nua",
+    "aria": "Relógio da Terra: doze meses de chuva, humidade do solo e temperatura, com o calendário da cultura escolhida.",
+    "atrasoNota": "Com a chuva atrasada, o início da época passa para {mes}.",
+    "aviso": "Este cenário também foi aplicado às pontuações abaixo.",
+    "regra": "Anéis: cada mês é um setor, com altura proporcional ao valor (chuva em mm; solo e temperatura relativos ao máximo e mínimo locais). Culturas: começam no mês de início da época chuvosa e duram o ciclo mínimo da EcoCrop; a parte esbatida vai até ao ciclo máximo. Os meses sem cultura são terra nua. Como a faixa de ciclo da EcoCrop é larga (milho: 65 a 365 dias), o arco cheio usa o meio da faixa e a parte esbatida vai até ao ciclo máximo; a ficha de cada cultura tem os dois limites.",
+    "regraCenario": "Os cenários mudam só a chuva: a humidade do solo e a temperatura ficam como foram medidas, porque não temos um modelo que as ligue com rigor."
+  },
+  "resultado": {
+    "atual": "A tua rotação atual",
+    "alternativa": "Alternativa {n}",
+    "pontuacao": "Pontuação",
+    "de100": "de 100",
+    "epoca": "Época {n}",
+    "porque": "Porque foi sugerida",
+    "evidencia": "Que evidência a sustenta",
+    "beneficios": "Benefícios",
+    "lacunas": "O que não sabemos",
+    "riscos": "Validar com técnico local",
+    "criterios": "Critérios usados",
+    "regras": "Como pontuamos",
+    "semDados": "sem dados",
+    "nota": "A pontuação compara as três rotações entre si. Não é previsão de colheita nem promessa de resultado.",
+    "notas": {
+      "maoDeObra": "A mão de obra não altera a pontuação: não temos dados de exigência de trabalho por cultura. Fica anotado para a validação local.",
+      "irrigacao": "Tens irrigação, por isso a água pesa menos na pontuação.",
+      "sequeiro": "Sem irrigação, a água pesa mais na pontuação."
+    },
+    "criteriosNomes": {
+      "agua": "Água",
+      "calor": "Calor",
+      "azoto": "Azoto",
+      "pragas": "Pragas",
+      "risco": "Risco",
+      "cobertura": "Cobertura do solo",
+      "materiaOrganica": "Matéria orgânica",
+      "rendimento": "Rendimento"
+    },
+    "erro": "Não foi possível montar as rotações com os dados desta zona.",
+    "regrasTexto": {
+      "pesos": "Pesos aplicados a cada critério: {lista}",
+      "metodo": "Cada cultura recebe 0 a 1 em cada critério disponível. A rotação é a média ponderada desses critérios (80%) mais a diversidade de famílias (20%), arredondada a 100.",
+      "semDados": "Ficam de fora por falta de dado: cobertura do solo, matéria orgânica e rendimento. Nenhum valor é estimado no lugar deles.",
+      "diversidade": "Diversidade de famílias",
+      "sim": "sim",
+      "nao": "não"
+    }
+  },
+  "motor": {
+    "porque": {
+      "atual": "É a sequência que indicaste, repetida como está: {c1}, {c2}, {c3}. Serve de base para comparar.",
+      "leguminosa": "{cultura} é leguminosa e entra depois de {anterior}: repõe azoto no solo sem adubo extra.",
+      "diversidade": "As três épocas são de famílias diferentes, o que ajuda a quebrar o ciclo de pragas.",
+      "semRepeticao": "Nenhuma cultura se repete em duas épocas seguidas."
+    },
+    "beneficio": {
+      "azoto": "Uma época com leguminosa repõe azoto no solo.",
+      "pragas": "A família muda entre épocas, por isso a pressão de pragas baixa.",
+      "agua": "A chuva da zona cai dentro da faixa que estas culturas toleram.",
+      "diversidade": "Três famílias diferentes ao longo do ciclo.",
+      "estabilidade": "Sequência sem mudanças bruscas de exigência entre épocas."
+    },
+    "lacuna": {
+      "aguaCiclo": "Necessidade de água no ciclo: dado em falta.",
+      "raiz": "Profundidade de raiz: dado em falta.",
+      "cobertura": "Cobertura do solo e risco de erosão: dado em falta.",
+      "uso": "Uso e mercado desta cultura: dado em falta.",
+      "rendimento": "Rendimento e preço não entram na pontuação.",
+      "solo": "A textura do solo foi indicada por ti; não há análise de solo."
+    },
+    "risco": {
+      "seca": "A maior seca da época chegou a {dias} dias seguidos.",
+      "calor": "{dias} dias por ano passam dos 35 °C.",
+      "chuvaIrregular": "A chuva varia {cv} % entre anos.",
+      "aguaAjuste": "A chuva média fica aquém do que a cultura pede.",
+      "variedade": "As faixas da EcoCrop cobrem muitas variedades: confirma a tua."
+    },
+    "evidencia": {
+      "chuvaLocal": "Chuva média da zona: {chuva} mm/ano (NASA POWER, 2001–2024).",
+      "chuvaCulturas": "Chuva anual que cada cultura tolera (EcoCrop): {lista}.",
+      "ciclos": "Ciclos por cultura (EcoCrop): {lista}.",
+      "epoca": "Época chuvosa: {meses} meses, cerca de {dias} dias (regra nossa).",
+      "temperaturaEpoca": "Temperatura média na época chuvosa: {t} °C (NASA POWER).",
+      "temperaturaOtima": "Temperatura ótima por cultura (EcoCrop): {lista}.",
+      "calor": "Dias com máxima a 2 m ≥ 35 °C: {dias} por ano (contagem nossa).",
+      "familias": "Famílias botânicas (EcoCrop): {lista}."
+    }
+  },
+  "aviso": "Esta ferramenta ajuda a pensar. A decisão é tua e do técnico agrícola da tua zona.",
+  "navegacao": {
+    "anterior": "Voltar",
+    "seguinte": "Continuar",
+    "verResultado": "Ver comparação"
+  },
+  "offline": {
+    "aviso": "Modo offline: a usar os últimos dados.",
+    "ultima": "Última atualização:",
+    "nunca": "ainda sem dados descarregados",
+    "online": "Ligado. A atualizar dados em segundo plano.",
+    "etiqueta": "Sem rede",
+    "voltar": "Voltar ao início",
+    "tituloPagina": "Terra Viva — sem rede",
+    "paginaTitulo": "Sem rede, mas com os dados que já tens",
+    "paginaTexto": "Esta página ainda não está guardada no teu telemóvel. Abre a Terra Viva uma vez com internet e volta depois: a aplicação fica disponível offline."
+  },
+  "rodape": {
+    "nota": "Protótipo para o NASA Space Apps Challenge 2026. Dados da NASA, conhecimento agronómico citado, regras nossas — sempre rotulados.",
+    "equipa": "Equipa Terra Viva · Calumbo, Zango, Angola",
+    "licenca": "Código aberto, licença Apache 2.0",
+    "semDados": "Sem dados pessoais. Sem imagens de pessoas."
+  },
+  "tema": {
+    "claro": "Modo campo desligado",
+    "campo": "Modo campo ligado"
+  },
+  "sobre": {
+    "titulo": "Sobre a Terra Viva",
+    "intro": "A Terra Viva nasceu no NASA Space Apps Challenge 2026, no evento local de Calumbo, Zango. É uma ferramenta de apoio à decisão: ajuda o agricultor e o técnico agrícola a pensar a rotação de culturas, não decide por eles.",
+    "h2metodo": "Metodologia",
+    "metodo": "Cada zona tem um ponto de referência verificado. Para esse ponto, descarregamos observações da NASA POWER — temperatura, precipitação, humidade do solo, radiação e vento — ao longo de várias décadas, e agregamos por mês e por ano. A partir dessa série calculamos indicadores simples: início e fim da época chuvosa, dias secos consecutivos, meses com terra nua, stress térmico e variação entre anos. Cada indicador leva a etiqueta CALCULADO POR NÓS e a regra escrita, porque a regra é uma escolha nossa.",
+    "h2limites": "Limites que assumimos",
+    "limites": "O satélite não mede a fertilidade do solo. Mede chuva, temperatura, humidade, vegetação e relevo. As fichas das culturas cobrem faixas amplas, não a variedade que está na tua machamba. Os preços de mercado não estão incluídos. Por isso cada rotação mostra o painel «O que não sabemos» e a lista do que precisa de validação local.",
+    "h2dados": "Dados que usamos e dados que não usamos",
+    "dados": "Usamos a NASA POWER como fonte principal, com fontes globais de apoio (FAO e, se estiver acessível, ISRIC SoilGrids). Os recursos do desafio baseados nos Estados Unidos — WSS, CDL, PRISM, SSURGO, NAIP — não cobrem Angola e por isso não são usados. A decisão está registada aqui para ser discutida, não escondida.",
+    "h2ia": "Uso de IA",
+    "ia": "A ferramenta não usa IA para gerar recomendações: os textos de cada rotação são escritos por regras determinísticas a partir dos resultados do motor. IA generativa foi usada no desenvolvimento deste site (código, textos e desenho), com revisão da equipa. Nenhum número mostrado foi gerado por IA.",
+    "h2privacidade": "Privacidade",
+    "privacidade": "Não há contas, não há servidor e não recolhemos dados pessoais. As tuas escolhas ficam no teu telemóvel.",
+    "voltar": "Voltar ao início"
+  },
+  "fontesPagina": {
+    "titulo": "Fontes e créditos",
+    "intro": "Tudo o que está no ecrã vem de algum sítio. Esta é a lista, com licença e data de consulta.",
+    "h2dados": "Dados",
+    "h2cartografia": "Cartografia",
+    "h2tipografia": "Tipografia",
+    "h2software": "Software e apoio",
+    "nasa": "NASA POWER — Prediction Of Worldwide Energy Resources. Parâmetros de meteorologia e energia por coordenadas, sem chave de API. Fonte principal do clima.",
+    "nasaUrl": "https://power.larc.nasa.gov/",
+    "fao": "FAO — necessidades hídricas das culturas e fichas de cultivo. Usada na base EcoCrop, com citação por campo.",
+    "faoUrl": "https://www.fao.org/land-water/databases-and-software/crop-information/en/",
+    "ecocrop": "FAO EcoCrop — requisitos ecológicos das culturas: família, ciclo, temperatura, chuva anual e uso. É a base das fichas das oito culturas; os campos que a base não cobre ficam como dado em falta.",
+    "ecocropUrl": "https://ecocrop.apps.fao.org/ecocrop/srv/en/home",
+    "soilgrids": "ISRIC SoilGrids — solo global a 250 m. Ainda não integrado; ver «possível melhoria».",
+    "soilgridsUrl": "https://soilgrids.org/",
+    "naturalearth": "Natural Earth — contorno de Angola, escala 1:110m, domínio público.",
+    "naturalearthUrl": "https://www.naturalearthdata.com/",
+    "osm": "OpenStreetMap e Nominatim — coordenadas das oito zonas. Licença ODbL.",
+    "osmUrl": "https://www.openstreetmap.org/copyright",
+    "fraunces": "Fraunces, de Undercase Type — títulos. Licença SIL Open Font License 1.1, auto-alojada em WOFF2.",
+    "frauncesUrl": "https://github.com/undercasetype/Fraunces",
+    "karla": "Karla, de Jonny Pinhorn — texto corrido. Licença SIL Open Font License 1.1, auto-alojada em WOFF2.",
+    "karlaUrl": "https://github.com/jonpinhorn/typespecimens",
+    "spaceapps": "NASA Space Apps Challenge 2026 — desafio e enquadramento do evento local de Calumbo, Zango.",
+    "spaceappsUrl": "https://www.spaceappschallenge.org/",
+    "voltar": "Voltar ao início"
+  }
+}

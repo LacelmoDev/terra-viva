@@ -1,0 +1,342 @@
+{
+  "meta": {
+    "lingua": "en",
+    "versao": "1.0.0-marco6",
+    "titulo": "Terra Viva — the living calendar of your land",
+    "descricao": "Decision support for farmers in Angola: NASA data for your area, indicators with visible rules, and a comparison of three crop rotations."
+  },
+  "marca": {
+    "nome": "Terra Viva",
+    "lema": "Living calendar"
+  },
+  "a11y": {
+    "saltar": "Skip to content",
+    "tema": "Toggle field mode (dark)",
+    "menu": "Menu",
+    "mapa": "Map of Angola with the eight preloaded farming areas",
+    "pin": "Choose the area of",
+    "passoAnterior": "Previous step",
+    "passoSeguinte": "Next step",
+    "idioma": "Language"
+  },
+  "nav": {
+    "inicio": "Home",
+    "comecar": "Start",
+    "sobre": "About",
+    "fontes": "Sources",
+    "principal": "Main"
+  },
+  "hero": {
+    "etiqueta": "NASA Space Apps Challenge 2026 · Calumbo, Zango local event",
+    "titulo": "The living",
+    "titulo2": "calendar",
+    "titulo3": "of your land.",
+    "sub": "Pick your area, say what you planted and what matters to you. Terra Viva reads NASA data for your point on the map, shows the year of your land month by month, and compares three crop rotations — with the evidence, the gaps and the risks in plain sight.",
+    "cta1": "Start with the map",
+    "cta2": "How it works",
+    "factos": {
+      "zonas": "8 farming areas in Angola",
+      "dados": "NASA POWER data, long series",
+      "offline": "Works without internet"
+    },
+    "motivoLegenda": "The Earth Clock — one year in your area, month by month"
+  },
+  "confianca": {
+    "titulo": "No number without a source",
+    "sub": "Every value on screen carries one of three labels. They are never mixed.",
+    "nasa": {
+      "nome": "NASA data",
+      "texto": "Rain, temperature, soil moisture and radiation for your point, as the satellite and the reanalysis record them."
+    },
+    "calculado": {
+      "nome": "Calculated by us",
+      "texto": "Indicators derived from the data, with the rule written next to them. You can disagree with the rule and see what changes."
+    },
+    "conhecimento": {
+      "nome": "Agronomic knowledge",
+      "texto": "Cycles, water needs and practices for each crop, always with the source cited."
+    }
+  },
+  "fluxo": {
+    "etiqueta": "Four steps",
+    "titulo": "From your field to the comparison",
+    "sub": "All on a phone, with large tap targets and readable text. You can go back at any step.",
+    "passos": {
+      "1": "Where you are",
+      "2": "What you planted",
+      "3": "What matters to you",
+      "4": "Your comparison"
+    }
+  },
+  "passo1": {
+    "etiqueta": "Step 01",
+    "titulo": "Where are you?",
+    "sub": "Tap the map of Angola or choose the area from the list.",
+    "listaTitulo": "Preloaded areas",
+    "escolhida": "Chosen area",
+    "nenhuma": "You have not chosen an area yet.",
+    "fonteMapa": "Outline: Natural Earth (public domain). Coordinates: OpenStreetMap / Nominatim (ODbL).",
+    "solo": {
+      "titulo": "What is your soil like?",
+      "sub": "Pick the texture you know from your land. It is optional and you can change it later.",
+      "arenoso": "Sandy",
+      "franco": "Loam",
+      "argiloso": "Clay",
+      "naoSei": "I don't know",
+      "nota": "This information comes from you, not from a satellite. The satellite sees rain, temperature, moisture, vegetation and relief — it does not see soil fertility."
+    }
+  },
+  "passo2": {
+    "etiqueta": "Step 02",
+    "titulo": "What did you plant?",
+    "sub": "Choose last season's crop and, if you remember, the one before it.",
+    "ultima": "Last season",
+    "anterior": "Previous season (optional)",
+    "pousio": "Fallow",
+    "ajuda": "If you left the land to rest, choose “Fallow”. You don't need to know the variety name.",
+    "escolher": "Choose"
+  },
+  "passo3": {
+    "etiqueta": "Step 03",
+    "titulo": "What matters to you?",
+    "sub": "Give weight to what drives your decisions. Three positions per priority, no numbers to memorise.",
+    "prioridades": {
+      "agua": "Water",
+      "rendimento": "Yield",
+      "solo": "Soil",
+      "risco": "Risk"
+    },
+    "niveis": {
+      "baixa": "Low",
+      "normal": "Normal",
+      "alta": "High"
+    },
+    "irrigacao": "Do you have irrigation?",
+    "sim": "Yes",
+    "nao": "No",
+    "maoDeObra": "Available labour",
+    "pouca": "Little",
+    "normal": "Normal",
+    "muita": "Plenty",
+    "nota": "The “yield” priority is recorded but does not change the score yet: there is no yield data per crop. Nothing is estimated in its place."
+  },
+  "passo4": {
+    "etiqueta": "Step 04",
+    "titulo": "Your comparison",
+    "sub": "Three rotations for the same area and the same priorities.",
+    "semZona": "Choose the area in step 1 first.",
+    "semCultura": "Choose last season's crop in step 2 first.",
+    "aCaminho": "The clock above uses NASA data for this area. Change the rain scenario and watch the scores below move."
+  },
+  "clima": {
+    "titulo": "The year of the land in this area",
+    "origem": "Calculated by us",
+    "fonte": "NASA POWER · 2001–2024",
+    "semZona": "Choose an area to see the numbers for the year.",
+    "carregando": "Reading NASA data for this area…",
+    "erro": "Could not load the data for this area.",
+    "chuva": "Rain per year",
+    "epoca": "Rainy season",
+    "seca": "Longest dry spell",
+    "calor": "Hot days",
+    "dias": "days",
+    "meses": "months",
+    "verRegras": "See rules and limits",
+    "limite": "These numbers come from a NASA model for a point on the map, not from your field. The rules and limits are on the About page.",
+    "qualidade": "One month in this series was flagged as suspect and left out of the averages.",
+    "mediana": "median of {anos} years",
+    "piorAno": "worst year: {ano}"
+  },
+  "relogio": {
+    "etiqueta": "The Earth Clock",
+    "titulo": "One year in your land",
+    "sub": "Three rings: rain, soil moisture and temperature, month by month. The inner ring is the calendar of the chosen crop.",
+    "legenda": {
+      "chuva": "Rain",
+      "solo": "Soil moisture",
+      "temp": "Temperature",
+      "cultura": "Crop in the field",
+      "terraNua": "Bare soil"
+    },
+    "rotacao": "Rotation",
+    "epoca": "Season",
+    "cenario": "Scenario",
+    "cenarios": {
+      "normal": "Normal season",
+      "atraso": "Rain arrives 3 weeks late",
+      "menos20": "20% less rain",
+      "mais20": "20% more rain"
+    },
+    "rotulos": {
+      "atual": "Current",
+      "alternativa": "Alt. {n}"
+    },
+    "inicio": "Season start: {mes}",
+    "ciclo": "Cycle {min}–{max} days",
+    "terraNuaMeses": "{n} months of bare soil",
+    "semCultura": "No crop chosen",
+    "tabela": "See as a table",
+    "tabelaCabecalho": {
+      "mes": "Month",
+      "chuva": "Rain (mm)",
+      "solo": "Soil (0–1)",
+      "temp": "Temp. (°C)",
+      "cultura": "In the field"
+    },
+    "resumo": "Rain {chuva} mm · season {inicio}–{fim} · {n} months of bare soil",
+    "aria": "Earth Clock: twelve months of rain, soil moisture and temperature, with the calendar of the chosen crop.",
+    "atrasoNota": "With the rain delayed, the season now starts in {mes}.",
+    "aviso": "This scenario was also applied to the scores below.",
+    "regra": "Rings: each month is a sector, with height proportional to the value (rain in mm; soil and temperature relative to the local maximum and minimum). Crops: they start in the month the rainy season begins and last the shortest EcoCrop cycle; the faded part runs to the longest cycle. Months without a crop are bare soil. Because the EcoCrop cycle range is wide (maize: 65 to 365 days), the solid arc uses the middle of the range and the faded part runs to the longest cycle; each crop's sheet has both limits.",
+    "regraCenario": "The scenarios change rain only: soil moisture and temperature stay as measured, because we have no model that links them reliably."
+  },
+  "resultado": {
+    "atual": "Your current rotation",
+    "alternativa": "Alternative {n}",
+    "pontuacao": "Score",
+    "de100": "of 100",
+    "epoca": "Season {n}",
+    "porque": "Why it was suggested",
+    "evidencia": "What evidence supports it",
+    "beneficios": "Benefits",
+    "lacunas": "What we don't know",
+    "riscos": "Check with a local technician",
+    "criterios": "Criteria used",
+    "regras": "How we score",
+    "semDados": "no data",
+    "nota": "The score compares the three rotations with each other. It is not a harvest forecast or a promise of results.",
+    "notas": {
+      "maoDeObra": "Labour does not change the score: we have no data on work requirements per crop. It is noted for local validation.",
+      "irrigacao": "You have irrigation, so water weighs less in the score.",
+      "sequeiro": "Without irrigation, water weighs more in the score."
+    },
+    "criteriosNomes": {
+      "agua": "Water",
+      "calor": "Heat",
+      "azoto": "Nitrogen",
+      "pragas": "Pests",
+      "risco": "Risk",
+      "cobertura": "Soil cover",
+      "materiaOrganica": "Organic matter",
+      "rendimento": "Yield"
+    },
+    "erro": "Could not build the rotations with the data for this area.",
+    "regrasTexto": {
+      "pesos": "Weights applied to each criterion: {lista}",
+      "metodo": "Each crop scores 0 to 1 on every available criterion. The rotation is the weighted average of those criteria (80%) plus family diversity (20%), rounded to 100.",
+      "semDados": "Left out for lack of data: soil cover, organic matter and yield. No value is estimated in their place.",
+      "diversidade": "Family diversity",
+      "sim": "yes",
+      "nao": "no"
+    }
+  },
+  "motor": {
+    "porque": {
+      "atual": "This is the sequence you gave, repeated as it is: {c1}, {c2}, {c3}. It is the baseline for the comparison.",
+      "leguminosa": "{cultura} is a legume and comes after {anterior}: it puts nitrogen back into the soil without extra fertiliser.",
+      "diversidade": "The three seasons are from different families, which helps break the pest cycle.",
+      "semRepeticao": "No crop repeats in two seasons in a row."
+    },
+    "beneficio": {
+      "azoto": "One legume season puts nitrogen back into the soil.",
+      "pragas": "The family changes between seasons, so pest pressure drops.",
+      "agua": "The area's rain falls within the range these crops tolerate.",
+      "diversidade": "Three different families across the cycle.",
+      "estabilidade": "A sequence without sharp changes in demand between seasons."
+    },
+    "lacuna": {
+      "aguaCiclo": "Water needed during the cycle: data missing.",
+      "raiz": "Root depth: data missing.",
+      "cobertura": "Soil cover and erosion risk: data missing.",
+      "uso": "Use and market for this crop: data missing.",
+      "rendimento": "Yield and price are not part of the score.",
+      "solo": "The soil texture was given by you; there is no soil analysis."
+    },
+    "risco": {
+      "seca": "The longest dry spell in the season reached {dias} days in a row.",
+      "calor": "{dias} days a year go above 35 °C.",
+      "chuvaIrregular": "Rain varies {cv}% between years.",
+      "aguaAjuste": "Average rain falls short of what the crop needs.",
+      "variedade": "EcoCrop ranges cover many varieties: check yours."
+    },
+    "evidencia": {
+      "chuvaLocal": "Average rain in the area: {chuva} mm/year (NASA POWER, 2001–2024).",
+      "chuvaCulturas": "Annual rain each crop tolerates (EcoCrop): {lista}.",
+      "ciclos": "Cycles per crop (EcoCrop): {lista}.",
+      "epoca": "Rainy season: {meses} months, about {dias} days (our rule).",
+      "temperaturaEpoca": "Average temperature in the rainy season: {t} °C (NASA POWER).",
+      "temperaturaOtima": "Optimum temperature per crop (EcoCrop): {lista}.",
+      "calor": "Days with maximum at 2 m ≥ 35 °C: {dias} per year (our count).",
+      "familias": "Botanical families (EcoCrop): {lista}."
+    }
+  },
+  "aviso": "This tool helps you think. The decision is yours and your local extension officer's.",
+  "navegacao": {
+    "anterior": "Back",
+    "seguinte": "Continue",
+    "verResultado": "See comparison"
+  },
+  "offline": {
+    "aviso": "Offline mode: using the last data.",
+    "ultima": "Last update:",
+    "nunca": "no data downloaded yet",
+    "online": "Online. Updating data in the background.",
+    "etiqueta": "Offline",
+    "voltar": "Back to the start",
+    "tituloPagina": "Terra Viva — no network",
+    "paginaTitulo": "No network, but you still have the data",
+    "paginaTexto": "This page is not saved on your phone yet. Open Terra Viva once with internet and come back later: the app stays available offline."
+  },
+  "rodape": {
+    "nota": "Prototype for the NASA Space Apps Challenge 2026. NASA data, cited agronomic knowledge, our own rules — always labelled.",
+    "equipa": "Terra Viva team · Calumbo, Zango, Angola",
+    "licenca": "Open source, Apache 2.0 licence",
+    "semDados": "No personal data. No images of people."
+  },
+  "tema": {
+    "claro": "Field mode off",
+    "campo": "Field mode on"
+  },
+  "sobre": {
+    "titulo": "About Terra Viva",
+    "intro": "Terra Viva was born at the NASA Space Apps Challenge 2026, at the Calumbo, Zango local event. It is a decision-support tool: it helps farmers and extension officers think through crop rotation, it does not decide for them.",
+    "h2metodo": "Methodology",
+    "metodo": "Each area has a verified reference point. For that point we download NASA POWER observations — temperature, precipitation, soil moisture, radiation and wind — over several decades, and aggregate them by month and by year. From that series we calculate simple indicators: start and end of the rainy season, consecutive dry days, months with bare soil, heat stress and variation between years. Each indicator carries the CALCULATED BY US label and the written rule, because the rule is our choice.",
+    "h2limites": "Limits we accept",
+    "limites": "The satellite does not measure soil fertility. It measures rain, temperature, moisture, vegetation and relief. The crop sheets cover wide ranges, not the variety in your field. Market prices are not included. That is why every rotation shows the “What we don't know” panel and the list of what needs local validation.",
+    "h2dados": "Data we use and data we don't",
+    "dados": "We use NASA POWER as the main source, with supporting global sources (FAO and, where accessible, ISRIC SoilGrids). The United States–based challenge resources — WSS, CDL, PRISM, SSURGO, NAIP — do not cover Angola and are therefore not used. The decision is recorded here to be discussed, not hidden.",
+    "h2ia": "Use of AI",
+    "ia": "The tool does not use AI to generate recommendations: the texts for each rotation are written by deterministic rules from the engine's results. Generative AI was used while developing this site (code, text and design), with the team reviewing it. No number shown was generated by AI.",
+    "h2privacidade": "Privacy",
+    "privacidade": "No accounts, no server, no personal data collected. Your choices stay on your phone.",
+    "voltar": "Back to the start"
+  },
+  "fontesPagina": {
+    "titulo": "Sources and credits",
+    "intro": "Everything on screen comes from somewhere. This is the list, with licence and date consulted.",
+    "h2dados": "Data",
+    "h2cartografia": "Cartography",
+    "h2tipografia": "Typography",
+    "h2software": "Software and support",
+    "nasa": "NASA POWER — Prediction Of Worldwide Energy Resources. Weather and energy parameters by coordinates, no API key. Main climate source.",
+    "nasaUrl": "https://power.larc.nasa.gov/",
+    "fao": "FAO — crop water requirements and crop sheets. Used through the EcoCrop database, cited field by field.",
+    "faoUrl": "https://www.fao.org/land-water/databases-and-software/crop-information/en/",
+    "ecocrop": "FAO EcoCrop — ecological requirements of crops: family, cycle, temperature, annual rainfall and use. It is the basis of the eight crop sheets; fields the database does not cover stay as missing data.",
+    "ecocropUrl": "https://ecocrop.apps.fao.org/ecocrop/srv/en/home",
+    "soilgrids": "ISRIC SoilGrids — global soil at 250 m. Not integrated yet; see “possible improvement”.",
+    "soilgridsUrl": "https://soilgrids.org/",
+    "naturalearth": "Natural Earth — outline of Angola, 1:110m scale, public domain.",
+    "naturalearthUrl": "https://www.naturalearthdata.com/",
+    "osm": "OpenStreetMap and Nominatim — coordinates of the eight areas. ODbL licence.",
+    "osmUrl": "https://www.openstreetmap.org/copyright",
+    "fraunces": "Fraunces, by Undercase Type — headings. SIL Open Font License 1.1, self-hosted as WOFF2.",
+    "frauncesUrl": "https://github.com/undercasetype/Fraunces",
+    "karla": "Karla, by Jonny Pinhorn — body text. SIL Open Font License 1.1, self-hosted as WOFF2.",
+    "karlaUrl": "https://github.com/jonpinhorn/typespecimens",
+    "spaceapps": "NASA Space Apps Challenge 2026 — challenge and context of the Calumbo, Zango local event.",
+    "spaceappsUrl": "https://www.spaceappschallenge.org/",
+    "voltar": "Back to the start"
+  }
+}

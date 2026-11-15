@@ -1,0 +1,507 @@
+<!doctype html>
+<html lang="pt-AO">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Terra Viva — o calendário vivo da tua terra</title>
+    <meta
+      name="description"
+      content="Ferramenta de apoio à decisão para agricultores de Angola: dados da NASA para a tua zona, indicadores com regras visíveis e comparação de três rotações de culturas."
+    />
+    <meta name="theme-color" content="#121a15" />
+    <meta name="color-scheme" content="light dark" />
+    <link rel="manifest" href="manifest.webmanifest" />
+    <link rel="icon" href="icons/favicon.svg" type="image/svg+xml" />
+    <link rel="apple-touch-icon" href="icons/apple-touch-icon-180.png" />
+    <link rel="stylesheet" href="css/tokens.css" />
+    <link rel="stylesheet" href="css/base.css" />
+    <link rel="stylesheet" href="css/componentes.css" />
+    <link rel="stylesheet" href="css/relogio.css" />
+    <script>
+      // Antes de pintar: tema guardado e marca de JS ligado (evita salto de conteúdo).
+      (function () {
+        try {
+          if (localStorage.getItem("tv:tema") === "campo") {
+            document.documentElement.setAttribute("data-tema", "campo");
+          }
+        } catch (e) {}
+        document.documentElement.classList.add("js");
+      })();
+    </script>
+    <script type="module" src="js/app.js"></script>
+  </head>
+  <body>
+    <a class="saltar" href="#conteudo" data-i18n="a11y.saltar">Saltar para o conteúdo</a>
+    <div class="grao" aria-hidden="true"></div>
+
+    <!-- Símbolos das culturas: desenhados à mão, traço único, sem bibliotecas. -->
+    <svg width="0" height="0" aria-hidden="true" focusable="false" style="position: absolute">
+      <defs>
+        <g id="traco" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></g>
+      </defs>
+      <symbol id="i-milho" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M9.6 4.4c2.6-1.9 5.3-.6 5.5 3.2.2 4-2 8.3-4.7 9.5-2.5 1.2-4.3-1-4.1-4.1.2-3.4.9-6.6 3.3-8.6Z" />
+        <path d="M8.4 20.2c-1.6-4.1-1-8 1.5-12.2" />
+        <path d="M10.1 8.8h4.4M9.8 11.7h4.7M10.5 14.6h3.6" />
+      </symbol>
+      <symbol id="i-feijao" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M4.6 17.4C7 12.6 11.6 8.6 18.2 7.3c1.2-.2 1.8.6 1.3 1.8-1.9 4.8-6.2 8.4-11.2 9.9-1.6.5-3.1.2-3.7-1.6Z" />
+        <circle cx="9.1" cy="14.6" r="1.5" />
+        <circle cx="12.4" cy="12.3" r="1.5" />
+        <circle cx="15.8" cy="10.4" r="1.4" />
+      </symbol>
+      <symbol id="i-mandioca" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M12 3.4v6" />
+        <path d="M12 9.4C10.3 6.7 7.6 5.7 5 6.3c1.4 2.9 3.7 4.4 7 4.2Z" />
+        <path d="M12 9.4c1.7-2.7 4.4-3.7 7-3.1-1.4 2.9-3.7 4.4-7 4.2Z" />
+        <path d="M9.7 16.2c-.4-1.9.8-3.2 2.3-3.2s2.7 1.3 2.3 3.2c-.5 2.4-1.2 4.8-2.3 6.1-1.1-1.3-1.8-3.7-2.3-6.1Z" />
+      </symbol>
+      <symbol id="i-amendoim" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M8.4 4.6c2.1 0 3.8 1.4 3.8 3.2 0 1.1-.6 1.9-1.4 2.6.8.7 1.4 1.5 1.4 2.6 0 1.8-1.7 3.2-3.8 3.2s-3.8-1.4-3.8-3.2c0-1.1.6-1.9 1.4-2.6-.8-.7-1.4-1.5-1.4-2.6 0-1.8 1.7-3.2 3.8-3.2Z" transform="rotate(-18 8.4 10.4)" />
+        <path d="M11.8 14.6c1.4 2.2 3.4 3.4 6 3.6" />
+        <path d="M15.6 5.6c1.4.8 2.4 2 3 3.6" />
+      </symbol>
+      <symbol id="i-soja" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M6.4 19.4c.6-4.8 3-8.4 7.2-10.6" />
+        <path d="M13.2 5.2c2.6.6 4.4 2.4 5 4.8-2.6-.2-4.4-1.8-5-4.8Z" />
+        <circle cx="9.4" cy="15.4" r="1.7" />
+        <circle cx="12.9" cy="12.9" r="1.7" />
+      </symbol>
+      <symbol id="i-batata-doce" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M4.4 17.6c2.2-3.5 5.9-5.2 9.4-4.4 2.9.7 4.5 2.5 4.1 4.3-.4 2.3-3.9 3.5-7.4 2.9-2.7-.5-5-1.4-6.1-2.8Z" />
+        <path d="M13.8 12.6c.6-2.9 2.5-4.6 5.1-5-.4 2.7-2.2 4.6-5.1 5Z" />
+        <path d="M15.4 12.8c-1.3-2.5-1.3-4.6 0-6.4 1.8 1.5 2.1 3.9 0 6.4Z" />
+      </symbol>
+      <symbol id="i-massango" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M12 21V8.6" />
+        <path d="M12 8.8c-2.6 0-4.4-1.6-4.6-4.4 2.8.2 4.4 1.8 4.6 4.4Z" />
+        <path d="M12 8.8c2.6 0 4.4-1.6 4.6-4.4C13.8 4.6 12.2 6.2 12 8.8Z" />
+        <circle cx="9.6" cy="11.6" r="1.1" />
+        <circle cx="14.4" cy="11.6" r="1.1" />
+        <circle cx="12" cy="14.2" r="1.1" />
+        <path d="M8.6 18.2c2.2.7 4.6.7 6.8 0" />
+      </symbol>
+      <symbol id="i-abobora" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M12 5.4c4 0 7 2.8 7 6.6s-3 6.6-7 6.6-7-2.8-7-6.6 3-6.6 7-6.6Z" />
+        <path d="M12 5.4v13.2M8.7 6.4c-1.6 1.4-2.6 3.3-2.6 5.6s1 4.2 2.6 5.6M15.3 6.4c1.6 1.4 2.6 3.3 2.6 5.6s-1 4.2-2.6 5.6" />
+        <path d="M12 5.4c-.5-1.6.1-2.8 1.5-3.5" />
+      </symbol>
+      <symbol id="i-pousio" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M3.4 8.4c2.6-1.6 5.2-1.6 7.8 0s5.2 1.6 7.8 0" />
+        <path d="M3.4 13c2.6-1.6 5.2-1.6 7.8 0s5.2 1.6 7.8 0" />
+        <path d="M3.4 17.6c2.6-1.6 5.2-1.6 7.8 0s5.2 1.6 7.8 0" />
+      </symbol>
+    </svg>
+
+    <div class="aviso-offline" id="aviso-offline" role="status" hidden>
+      <span class="aviso-offline__ponto" aria-hidden="true"></span>
+      <span data-i18n="offline.aviso">Modo offline: a usar os últimos dados.</span>
+      <span class="aviso-offline__data" id="aviso-data"></span>
+    </div>
+
+    <header class="topo">
+      <div class="topo__interior">
+        <a class="marca" href="index.html#inicio">
+          <svg class="marca__selo" viewBox="0 0 40 40" aria-hidden="true" focusable="false">
+            <circle cx="20" cy="20" r="18.5" fill="none" stroke="currentColor" stroke-opacity="0.22" />
+            <circle cx="20" cy="20" r="13" fill="none" stroke="var(--terra)" stroke-width="3.4" stroke-linecap="round" stroke-dasharray="55 100" pathLength="100" transform="rotate(-90 20 20)" />
+            <circle cx="20" cy="20" r="7.5" fill="none" stroke="var(--dourado)" stroke-width="3" stroke-linecap="round" stroke-dasharray="62 100" pathLength="100" transform="rotate(40 20 20)" />
+            <circle cx="20" cy="20" r="2.4" fill="currentColor" />
+          </svg>
+          <span>
+            <span class="marca__nome" data-i18n="marca.nome">Terra Viva</span>
+            <span class="marca__lema" data-i18n="marca.lema">Calendário vivo</span>
+          </span>
+        </a>
+
+        <nav class="topo__nav" aria-label="Principal" data-i18n-attr="aria-label:nav.principal">
+          <a class="topo__link topo__link--longo" href="#fluxo" data-i18n="nav.comecar">Começar</a>
+          <a class="topo__link" href="sobre.html" data-i18n="nav.sobre">Sobre</a>
+          <a class="topo__link topo__link--longo" href="fontes.html" data-i18n="nav.fontes">Fontes</a>
+        <div class="idioma" role="group" aria-label="Idioma" data-i18n-attr="aria-label:a11y.idioma">
+          <button class="idioma__botao" type="button" data-lingua="pt" aria-pressed="true" lang="pt">PT</button>
+          <button class="idioma__botao" type="button" data-lingua="en" aria-pressed="false" lang="en">EN</button>
+        </div>
+        <button class="tema-botao" id="botao-tema" type="button" aria-pressed="false" aria-label="Alternar modo campo (escuro)" data-i18n-attr="aria-label:a11y.tema">
+            <svg data-icone="claro" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true">
+              <circle cx="12" cy="12" r="4.2" />
+              <path d="M12 1.8v2.4M12 19.8v2.4M1.8 12h2.4M19.8 12h2.4M4.8 4.8l1.7 1.7M17.5 17.5l1.7 1.7M19.2 4.8l-1.7 1.7M6.5 17.5l-1.7 1.7" stroke-linecap="round" />
+            </svg>
+            <svg data-icone="campo" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true">
+              <path d="M20.5 14.2A8.6 8.6 0 0 1 9.8 3.5a8.7 8.7 0 1 0 10.7 10.7Z" stroke-linejoin="round" />
+            </svg>
+          </button>
+        </nav>
+      </div>
+    </header>
+
+    <main id="conteudo">
+      <!-- ================= HERO ================= -->
+      <section class="hero" id="inicio" aria-labelledby="hero-titulo">
+        <canvas class="hero__chuva" id="chuva" aria-hidden="true"></canvas>
+        <svg class="hero__contornos" viewBox="0 0 800 600" aria-hidden="true" focusable="false">
+          <g fill="none" stroke="currentColor" stroke-width="1.4">
+            <path d="M-40 520C120 470 210 560 360 520s260-180 430-140 120 120 200 100" />
+            <path d="M-40 470C120 420 210 512 360 472s260-180 430-140 120 120 200 100" />
+            <path d="M-40 420C120 370 210 464 360 424s260-180 430-140 120 120 200 100" />
+            <path d="M-40 370C120 320 210 416 360 376s260-180 430-140 120 120 200 100" />
+            <path d="M-40 320C120 270 210 368 360 328s260-180 430-140 120 120 200 100" />
+            <path d="M-40 270C120 220 210 320 360 280s260-180 430-140 120 120 200 100" />
+            <path d="M-40 220C120 170 210 272 360 232s260-180 430-140 120 120 200 100" />
+            <path d="M-40 170C120 120 210 224 360 184s260-180 430-140 120 120 200 100" />
+          </g>
+        </svg>
+
+        <div class="hero__interior">
+          <div>
+            <p class="eyebrow" data-entrada style="--i: 0" data-i18n="hero.etiqueta">
+              NASA Space Apps Challenge 2026 · Evento local de Calumbo, Zango
+            </p>
+            <h1 class="hero__titulo" id="hero-titulo">
+              <span class="linha" style="--i: 0"><span data-i18n="hero.titulo">O calendário</span></span>
+              <span class="linha" style="--i: 1"><span><em data-i18n="hero.titulo2">vivo</em></span></span>
+              <span class="linha" style="--i: 2"><span data-i18n="hero.titulo3">da tua terra.</span></span>
+            </h1>
+            <p class="hero__sub" data-entrada style="--i: 3" data-i18n="hero.sub">
+              Escolhe a tua zona, diz o que plantaste e o que te importa. A Terra Viva lê os dados da
+              NASA para o teu ponto do mapa, mostra o ano da terra mês a mês e compara três rotações
+              de culturas — com a evidência, as lacunas e os riscos à vista.
+            </p>
+            <div class="hero__acoes" data-entrada style="--i: 4">
+              <a class="botao" href="#fluxo" data-i18n="hero.cta1">Começar pelo mapa</a>
+              <a class="botao botao--fantasma" href="#confianca" data-i18n="hero.cta2">Como funciona</a>
+            </div>
+            <ul class="hero__factos" data-entrada style="--i: 5" role="list">
+              <li data-i18n="hero.factos.zonas">8 zonas agrícolas de Angola</li>
+              <li data-i18n="hero.factos.dados">Dados NASA POWER, séries longas</li>
+              <li data-i18n="hero.factos.offline">Funciona sem internet</li>
+            </ul>
+          </div>
+
+          <div class="hero__motivo" data-entrada style="--i: 4">
+            <svg viewBox="0 0 320 320" role="img" aria-labelledby="motivo-titulo">
+              <title id="motivo-titulo">Motivo circular com doze marcas de mês e três anéis concêntricos</title>
+              <circle class="motivo__guia" cx="160" cy="160" r="128" />
+              <g id="motivo-meses" aria-hidden="true"></g>
+              <g aria-hidden="true">
+                <circle class="motivo__anel motivo__anel--chuva" cx="160" cy="160" r="104" pathLength="100" transform="rotate(-90 160 160)" />
+                <circle class="motivo__anel motivo__anel--solo" cx="160" cy="160" r="78" pathLength="100" transform="rotate(26 160 160)" />
+                <circle class="motivo__anel motivo__anel--calor" cx="160" cy="160" r="52" pathLength="100" transform="rotate(112 160 160)" />
+                <circle class="motivo__centro" cx="160" cy="160" r="4.5" />
+                <circle cx="160" cy="160" r="1.6" fill="#121a15" />
+              </g>
+            </svg>
+            <p class="motivo__legenda" data-i18n="hero.motivoLegenda">
+              O Relógio da Terra — um ano da tua zona, mês a mês
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <!-- ================= CONFIANÇA ================= -->
+      <section class="secao" id="confianca" aria-labelledby="confianca-titulo">
+        <div class="conteudo">
+          <div class="secao__cabeca revelar">
+            <p class="eyebrow" data-i18n="confianca.titulo">Nenhum número sem origem</p>
+            <h2 id="confianca-titulo" class="visualmente-oculto">Origem dos dados</h2>
+            <p class="sub" data-i18n="confianca.sub">
+              Cada valor no ecrã leva uma de três etiquetas. Nunca aparecem misturadas.
+            </p>
+          </div>
+          <div class="confianca__grade revelar">
+            <article class="confianca__item">
+              <span class="etiqueta etiqueta--nasa" data-i18n="confianca.nasa.nome">Dado NASA</span>
+              <p data-i18n="confianca.nasa.texto">
+                Chuva, temperatura, humidade do solo e radiação para o teu ponto, tal como o satélite
+                e a reanálise os registam.
+              </p>
+            </article>
+            <article class="confianca__item">
+              <span class="etiqueta etiqueta--calculado" data-i18n="confianca.calculado.nome">Calculado por nós</span>
+              <p data-i18n="confianca.calculado.texto">
+                Indicadores derivados dos dados, com a regra escrita ao lado. Podes discordar da regra
+                e ver o que muda.
+              </p>
+            </article>
+            <article class="confianca__item">
+              <span class="etiqueta etiqueta--conhecimento" data-i18n="confianca.conhecimento.nome">Conhecimento agronómico</span>
+              <p data-i18n="confianca.conhecimento.texto">
+                Ciclos, necessidades de água e práticas das culturas, sempre com a fonte citada.
+              </p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <!-- ================= FLUXO ================= -->
+      <section class="secao secao--papel" id="fluxo" aria-labelledby="fluxo-titulo">
+        <div class="conteudo">
+          <div class="secao__cabeca revelar">
+            <p class="eyebrow" data-i18n="fluxo.etiqueta">Quatro passos</p>
+            <h2 id="fluxo-titulo" data-i18n="fluxo.titulo">Da tua machamba à comparação</h2>
+            <p class="sub" data-i18n="fluxo.sub">
+              Tudo num telemóvel, com toques grandes e texto legível. Podes voltar atrás em qualquer
+              passo.
+            </p>
+          </div>
+
+          <nav class="trilho" id="trilho" aria-label="Passos">
+            <button class="trilho__item" type="button" data-ir="1" aria-current="step">
+              <span class="trilho__num">01</span>
+              <span class="trilho__rotulo" data-i18n="fluxo.passos.1">Onde estás</span>
+            </button>
+            <button class="trilho__item" type="button" data-ir="2">
+              <span class="trilho__num">02</span>
+              <span class="trilho__rotulo" data-i18n="fluxo.passos.2">O que plantaste</span>
+            </button>
+            <button class="trilho__item" type="button" data-ir="3">
+              <span class="trilho__num">03</span>
+              <span class="trilho__rotulo" data-i18n="fluxo.passos.3">O que te importa</span>
+            </button>
+            <button class="trilho__item" type="button" data-ir="4">
+              <span class="trilho__num">04</span>
+              <span class="trilho__rotulo" data-i18n="fluxo.passos.4">A tua comparação</span>
+            </button>
+          </nav>
+
+          <div class="passos" id="passos">
+            <!-- Passo 1 -->
+            <section class="passo" id="passo-1" data-passo="1" data-ativo aria-labelledby="passo-1-titulo">
+              <div class="passo__cabeca">
+                <p class="eyebrow" data-i18n="passo1.etiqueta">Passo 01</p>
+                <h2 id="passo-1-titulo" data-i18n="passo1.titulo">Onde estás?</h2>
+                <p class="sub" data-i18n="passo1.sub">Toca no mapa de Angola ou escolhe a zona na lista.</p>
+              </div>
+
+              <div class="mapa-bloco">
+                <div>
+                  <div class="mapa">
+                    <svg class="mapa__svg" id="mapa-svg" viewBox="0 0 1000 1000" role="img" aria-labelledby="mapa-titulo">
+                      <title id="mapa-titulo" data-i18n="a11y.mapa">
+                        Mapa de Angola com as oito zonas agrícolas pré-carregadas
+                      </title>
+                      <defs>
+                        <pattern id="trama-terra" width="7" height="7" patternUnits="userSpaceOnUse" patternTransform="rotate(38)">
+                          <rect width="7" height="7" fill="var(--terra-lavada)" />
+                          <line x1="0" y1="0" x2="0" y2="7" stroke="var(--terra)" stroke-opacity="0.32" stroke-width="1.4" />
+                        </pattern>
+                      </defs>
+                      <path class="mapa__contorno" id="angola-contorno" d="" />
+                    </svg>
+                    <div class="mapa__pins" id="mapa-pins"></div>
+                    <p class="mapa__rotulo" id="mapa-rotulo" aria-live="polite" data-i18n="passo1.nenhuma">
+                      Ainda não escolheste nenhuma zona.
+                    </p>
+                  </div>
+                  <p class="mapa__fonte" data-i18n="passo1.fonteMapa">
+                    Contorno: Natural Earth (domínio público). Coordenadas: OpenStreetMap / Nominatim (ODbL).
+                  </p>
+                </div>
+
+                <div>
+                  <h3 id="lista-titulo" data-i18n="passo1.listaTitulo">Zonas pré-carregadas</h3>
+                  <div class="zonas" id="lista-zonas" role="group" aria-labelledby="lista-titulo" aria-busy="true"></div>
+
+                  <fieldset class="solo">
+                    <legend data-i18n="passo1.solo.titulo">Como é o teu solo?</legend>
+                    <p class="solo__sub" data-i18n="passo1.solo.sub">
+                      Escolhe a textura que conheces da tua terra. É opcional e podes mudar depois.
+                    </p>
+                    <div class="solo__opcoes" id="solo-opcoes" role="group" aria-labelledby="passo-1-titulo">
+                      <button class="solo__opcao" type="button" data-solo="arenoso" aria-pressed="false" data-i18n="passo1.solo.arenoso">Arenoso</button>
+                      <button class="solo__opcao" type="button" data-solo="franco" aria-pressed="false" data-i18n="passo1.solo.franco">Franco</button>
+                      <button class="solo__opcao" type="button" data-solo="argiloso" aria-pressed="false" data-i18n="passo1.solo.argiloso">Argiloso</button>
+                      <button class="solo__opcao" type="button" data-solo="nao-sei" aria-pressed="false" data-i18n="passo1.solo.naoSei">Não sei</button>
+                    </div>
+                    <p class="solo__nota" data-i18n="passo1.solo.nota">
+                      Esta informação vem de ti, não de um satélite. O satélite vê chuva, temperatura,
+                      humidade, vegetação e relevo — não vê a fertilidade do solo.
+                    </p>
+                  </fieldset>
+                </div>
+              </div>
+
+              <section class="clima" id="clima" aria-labelledby="clima-titulo">
+                <div class="clima__cabeca">
+                  <h3 class="clima__titulo" id="clima-titulo" data-i18n="clima.titulo">
+                    O ano da terra nesta zona
+                  </h3>
+                </div>
+                <div id="clima-conteudo" class="clima__vazio" aria-live="polite" data-i18n="clima.semZona">
+                  Escolhe uma zona para ver os números do ano.
+                </div>
+              </section>
+            </section>
+
+            <!-- Passo 2 -->
+            <section class="passo" id="passo-2" data-passo="2" aria-labelledby="passo-2-titulo" hidden>
+              <div class="passo__cabeca">
+                <p class="eyebrow" data-i18n="passo2.etiqueta">Passo 02</p>
+                <h2 id="passo-2-titulo" data-i18n="passo2.titulo">O que plantaste?</h2>
+                <p class="sub" data-i18n="passo2.sub">
+                  Escolhe a cultura da última época e, se te lembrares, a da época anterior.
+                </p>
+              </div>
+
+              <div class="culturas-bloco">
+                <div class="culturas">
+                  <h3 id="rotulo-ultima" data-i18n="passo2.ultima">Última época</h3>
+                  <div class="culturas__grade" id="culturas-ultima" role="group" aria-labelledby="rotulo-ultima" aria-busy="true"></div>
+                </div>
+                <div class="culturas culturas--opcional">
+                  <h3 id="rotulo-anterior" data-i18n="passo2.anterior">Época anterior (opcional)</h3>
+                  <div class="culturas__grade" id="culturas-anterior" role="group" aria-labelledby="rotulo-anterior" aria-busy="true"></div>
+                </div>
+              </div>
+              <p class="solo__nota" data-i18n="passo2.ajuda">
+                Se deixaste a terra em descanso, escolhe «Pousio». Não precisas de saber o nome da
+                variedade.
+              </p>
+            </section>
+
+            <!-- Passo 3 -->
+            <section class="passo" id="passo-3" data-passo="3" aria-labelledby="passo-3-titulo" hidden>
+              <div class="passo__cabeca">
+                <p class="eyebrow" data-i18n="passo3.etiqueta">Passo 03</p>
+                <h2 id="passo-3-titulo" data-i18n="passo3.titulo">O que te importa?</h2>
+                <p class="sub" data-i18n="passo3.sub">
+                  Dá peso ao que decide por ti. Três posições por prioridade, sem números para decorar.
+                </p>
+              </div>
+
+              <div class="prioridades" id="prioridades">
+                <div class="prioridade" data-prioridade="agua">
+                  <span class="prioridade__nome" id="prioridade-agua" data-i18n="passo3.prioridades.agua">Água</span>
+                  <div class="segmentos" role="group" aria-labelledby="prioridade-agua">
+                    <button type="button" class="segmento" data-valor="0.5" aria-pressed="false" data-i18n="passo3.niveis.baixa">Pouco</button>
+                    <button type="button" class="segmento" data-valor="1" aria-pressed="true" data-i18n="passo3.niveis.normal">Normal</button>
+                    <button type="button" class="segmento" data-valor="1.5" aria-pressed="false" data-i18n="passo3.niveis.alta">Muito</button>
+                  </div>
+                </div>
+                <div class="prioridade" data-prioridade="rendimento">
+                  <span class="prioridade__nome" id="prioridade-rendimento" data-i18n="passo3.prioridades.rendimento">Rendimento</span>
+                  <div class="segmentos" role="group" aria-labelledby="prioridade-rendimento">
+                    <button type="button" class="segmento" data-valor="0.5" aria-pressed="false" data-i18n="passo3.niveis.baixa">Pouco</button>
+                    <button type="button" class="segmento" data-valor="1" aria-pressed="true" data-i18n="passo3.niveis.normal">Normal</button>
+                    <button type="button" class="segmento" data-valor="1.5" aria-pressed="false" data-i18n="passo3.niveis.alta">Muito</button>
+                  </div>
+                </div>
+                <div class="prioridade" data-prioridade="solo">
+                  <span class="prioridade__nome" id="prioridade-solo" data-i18n="passo3.prioridades.solo">Solo</span>
+                  <div class="segmentos" role="group" aria-labelledby="prioridade-solo">
+                    <button type="button" class="segmento" data-valor="0.5" aria-pressed="false" data-i18n="passo3.niveis.baixa">Pouco</button>
+                    <button type="button" class="segmento" data-valor="1" aria-pressed="true" data-i18n="passo3.niveis.normal">Normal</button>
+                    <button type="button" class="segmento" data-valor="1.5" aria-pressed="false" data-i18n="passo3.niveis.alta">Muito</button>
+                  </div>
+                </div>
+                <div class="prioridade" data-prioridade="risco">
+                  <span class="prioridade__nome" id="prioridade-risco" data-i18n="passo3.prioridades.risco">Risco</span>
+                  <div class="segmentos" role="group" aria-labelledby="prioridade-risco">
+                    <button type="button" class="segmento" data-valor="0.5" aria-pressed="false" data-i18n="passo3.niveis.baixa">Pouco</button>
+                    <button type="button" class="segmento" data-valor="1" aria-pressed="true" data-i18n="passo3.niveis.normal">Normal</button>
+                    <button type="button" class="segmento" data-valor="1.5" aria-pressed="false" data-i18n="passo3.niveis.alta">Muito</button>
+                  </div>
+                </div>
+              </div>
+
+              <div class="restricoes">
+                <div class="restricao">
+                  <h3 id="rotulo-irrigacao" data-i18n="passo3.irrigacao">Tens irrigação?</h3>
+                  <div class="segmentos" id="irrigacao" role="group" aria-labelledby="rotulo-irrigacao">
+                    <button type="button" class="segmento" data-irrigacao="false" aria-pressed="true" data-i18n="passo3.nao">Não</button>
+                    <button type="button" class="segmento" data-irrigacao="true" aria-pressed="false" data-i18n="passo3.sim">Sim</button>
+                  </div>
+                </div>
+                <div class="restricao">
+                  <h3 id="rotulo-mao" data-i18n="passo3.maoDeObra">Mão de obra disponível</h3>
+                  <div class="segmentos" id="mao-de-obra" role="group" aria-labelledby="rotulo-mao">
+                    <button type="button" class="segmento" data-mao="pouca" aria-pressed="false" data-i18n="passo3.pouca">Pouca</button>
+                    <button type="button" class="segmento" data-mao="normal" aria-pressed="true" data-i18n="passo3.normal">Normal</button>
+                    <button type="button" class="segmento" data-mao="muita" aria-pressed="false" data-i18n="passo3.muita">Muita</button>
+                  </div>
+                </div>
+              </div>
+
+              <p class="solo__nota" data-i18n="passo3.nota">
+                A prioridade «rendimento» fica registada mas ainda não altera a pontuação: falta dado
+                de rendimento por cultura. Nada é estimado no lugar dele.
+              </p>
+            </section>
+
+            <!-- Passo 4 -->
+            <section class="passo" id="passo-4" data-passo="4" aria-labelledby="passo-4-titulo" hidden>
+              <div class="passo__cabeca">
+                <p class="eyebrow" data-i18n="passo4.etiqueta">Passo 04</p>
+                <h2 id="passo-4-titulo" data-i18n="passo4.titulo">A tua comparação</h2>
+                <p class="sub" data-i18n="passo4.sub">
+                  Três rotações para a mesma zona e as mesmas prioridades.
+                </p>
+              </div>
+
+              <section class="relogio" id="relogio" aria-labelledby="relogio-titulo">
+                <div class="relogio__cabeca">
+                  <p class="eyebrow" data-i18n="relogio.etiqueta">O Relógio da Terra</p>
+                  <h3 id="relogio-titulo" data-i18n="relogio.titulo">Um ano na tua terra</h3>
+                </div>
+                <div id="relogio-conteudo"></div>
+              </section>
+
+              <div id="resultado" aria-live="polite"></div>
+
+              <p class="nota-marco" data-i18n="passo4.aCaminho">
+                O relógio em cima usa os dados da NASA para esta zona. Muda o cenário de chuva e vê as
+                pontuações abaixo mudarem.
+              </p>
+            </section>
+          </div>
+
+          <div class="passo__navegacao">
+            <button class="botao botao--fantasma botao--pequeno" type="button" id="botao-anterior">
+              <span data-i18n="navegacao.anterior">Voltar</span>
+            </button>
+            <button class="botao botao--pequeno" type="button" id="botao-seguinte">
+              <span data-i18n="navegacao.seguinte">Continuar</span>
+            </button>
+          </div>
+
+          <p class="aviso-fixo" data-i18n="aviso">
+            Esta ferramenta ajuda a pensar. A decisão é tua e do técnico agrícola da tua zona.
+          </p>
+        </div>
+      </section>
+    </main>
+
+    <footer class="rodape">
+      <div class="rodape__interior">
+        <div>
+          <div class="rodape__marca">
+            <svg class="marca__selo" viewBox="0 0 40 40" aria-hidden="true" focusable="false">
+              <circle cx="20" cy="20" r="18.5" fill="none" stroke="currentColor" stroke-opacity="0.22" />
+              <circle cx="20" cy="20" r="13" fill="none" stroke="var(--terra)" stroke-width="3.4" stroke-linecap="round" stroke-dasharray="55 100" pathLength="100" transform="rotate(-90 20 20)" />
+              <circle cx="20" cy="20" r="7.5" fill="none" stroke="var(--dourado)" stroke-width="3" stroke-linecap="round" stroke-dasharray="62 100" pathLength="100" transform="rotate(40 20 20)" />
+              <circle cx="20" cy="20" r="2.4" fill="currentColor" />
+            </svg>
+            <span>
+              <span class="marca__nome" data-i18n="marca.nome">Terra Viva</span>
+              <span class="marca__lema" data-i18n="marca.lema">Calendário vivo</span>
+            </span>
+          </div>
+          <p data-i18n="rodape.nota">
+            Protótipo para o NASA Space Apps Challenge 2026. Dados da NASA, conhecimento agronómico
+            citado, regras nossas — sempre rotulados.
+          </p>
+        </div>
+        <ul class="rodape__links">
+          <li><a href="index.html#fluxo" data-i18n="nav.comecar">Começar</a></li>
+          <li><a href="sobre.html" data-i18n="nav.sobre">Sobre</a></li>
+          <li><a href="fontes.html" data-i18n="nav.fontes">Fontes</a></li>
+        </ul>
+        <div class="rodape__base">
+          <span data-i18n="rodape.equipa">Equipa Terra Viva · Calumbo, Zango, Angola</span>
+          <span data-i18n="rodape.licenca">Código aberto, licença Apache 2.0</span>
+          <span data-i18n="rodape.semDados">Sem dados pessoais. Sem imagens de pessoas.</span>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>
